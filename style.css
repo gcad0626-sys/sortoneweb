@@ -601,7 +601,6 @@ ul{ margin:0; padding:0; list-style:none; }
   opacity: 0;
   visibility: hidden;
 }
-.card-1 { clip-path: inset(18.5% 4.5% 66% 4.5% round 14px); }
-.card-2 { clip-path: inset(39.5% 4.5% 46% 4.5% round 14px); }
-.card-3 { clip-path: inset(55% 4.5% 31.5% 4.5% round 14px); }
-.card-4 { clip-path: inset(69% 4.5% 16% 4.5% round 14px); }
+.card-1 { clip-path: inset(23.33% 4.5% 57.12% 4.5% round 14px); }
+.card-2 { clip-path: inset(49.82% 4.5% 31.89% 4.5% round 14px); }
+.card-3 { clip-path: inset(69.37% 4.5% 13.61% 4.5% round 14px); }
