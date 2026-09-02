@@ -66,13 +66,37 @@
         <span class="float-badge fb--5" data-float="5">#DAILY</span>
         <span class="float-badge fb--6" data-float="6">#MEMO</span>
 
-        <div class="phone-wrapper phone" id="phone1" style="width: 320px; border: 6.5px solid #fff; box-sizing: border-box; background: #69AAEE; padding: 0; overflow: hidden; position: relative;">
-          <img src="img/Central App Mockup0.png" alt="Home" class="base-img" style="width: 100%; height: auto; display: block; position: relative; z-index: 1;">
-          
-          <img src="img/Central App Mockup.png" class="card-layer card-1" alt="">
-          <img src="img/Central App Mockup.png" class="card-layer card-2" alt="">
-          <img src="img/Central App Mockup.png" class="card-layer card-3" alt="">
-          <img src="img/Central App Mockup.png" class="card-layer card-4" alt="">
+        <div class="phone-mockup">
+          <img src="img/Central App Mockup0.png" alt="SortOne 앱 화면" class="mockup-img">
+          <!-- 중요 메모 핀드 카드 -->
+          <div class="overlay-card overlay-card--pinned">
+            <div class="oc-date">2023.10.24</div>
+            <div class="oc-title">신규 프로젝트 마일스톤</div>
+            <div class="oc-body">다음 분기 핵심 과제와 세부 일정을 정리함. 디자인 시스템 고도화 및 접근성 가이드라인 준수가 최우선...</div>
+            <div class="oc-tags">
+              <span class="oc-badge oc-badge--work">#업무</span>
+              <span class="oc-badge oc-badge--priority">#우선순위</span>
+            </div>
+          </div>
+          <!-- 최신 메모 카드 3개 -->
+          <div class="overlay-card overlay-card--1">
+            <div class="oc-meta">어제</div>
+            <div class="oc-title">주말 캠핑 체크리스트</div>
+            <div class="oc-body">텐트, 침낭, 화로대, 식재료(고기, 야채, 소스), 랜턴, 보...</div>
+            <span class="oc-badge">개인</span>
+          </div>
+          <div class="overlay-card overlay-card--2">
+            <div class="oc-meta">2일 전</div>
+            <div class="oc-title">차세대 AI 필터링 로직 아이디어</div>
+            <div class="oc-body">사용자의 최근 검색 패턴과 컨텍스트를 분석하여 실...</div>
+            <span class="oc-badge oc-badge--idea">아이디어</span>
+          </div>
+          <div class="overlay-card overlay-card--3">
+            <div class="oc-meta">2023.10.20</div>
+            <div class="oc-title">독서 노트: 미니멀리즘의 힘</div>
+            <div class="oc-body">"불필요한 것을 덜어낼 때 진정 중요한 것이 보인다."</div>
+            <span class="oc-badge">개인</span>
+          </div>
         </div>
       </div>
     </div>
@@ -81,45 +105,25 @@
   <!-- ================= 02 AI ORGANIZE ================= -->
   <section class="section section--organize" id="organize">
     <div class="section-head">
-      <span class="section-eyebrow">01 INTRO</span>
+      <span class="section-eyebrow">02 AI ORGANIZE</span>
       <h2 class="section-title">쓰기만 하세요. 정리는 AI가 합니다.</h2>
       <p class="section-desc">생각을 기록하는 순간, AI가 내용을 분석하고 정리합니다.<br>분류에 신경 쓰지 말고 오직 기록에만 집중하세요.</p>
     </div>
 
     <div class="organize__stage" id="organizeStage">
       <div class="organize__phone-wrap">
-        <div class="phone phone--input">
-          <div class="phone__topbar">
-            <span class="phone__back">←</span>
-            <span class="phone__appname">SortOne</span>
-            <span class="phone__icons">⌕ ⚙ 🅦</span>
-          </div>
-          <div class="phone__input-area">
-            <p class="phone__placeholder-title">제목을 입력하세요</p>
-            <p class="phone__placeholder-body">내용을 입력하세요...</p>
-            <div class="ai-cursor-box">
-              <span class="ai-caret"></span>
-            </div>
-            <div class="analyzing-pill" id="analyzingPill">AI ANALYZING</div>
-          </div>
-          <div class="phone__suggest">
-            <p class="suggest-label">AI 추천 태그</p>
-            <div class="suggest-tags">
-              <span class="chip chip--work" id="srcTag1">비즈니스 성장</span>
-              <span class="chip chip--proj" id="srcTag2">핵심 성과</span>
-              <span class="chip chip--idea" id="srcTag3">아이디어</span>
-            </div>
-          </div>
-          <div class="phone__toolbar"><b>B</b><i>I</i><span>≡</span><span>▤</span><span>∞</span></div>
-        </div>
+        <img src="img/w2.png" alt="메모 입력 화면" class="organize-phone-img">
       </div>
 
-      <svg class="organize__connector" id="organizeConnector" viewBox="0 0 400 500" preserveAspectRatio="none">
-        <path id="pathA" d="M0,120 C120,120 160,140 260,150" fill="none"/>
-        <path id="pathB" d="M0,220 C120,220 160,250 260,300" fill="none"/>
-        <path id="pathC" d="M0,320 C120,320 160,330 260,420" fill="none"/>
-      </svg>
+      <!-- 중간 grid spacer (organize__middle, SVG는 absolute이므로 이 div가 col2를 점유) -->
+      <div class="organize__gap"></div>
 
+      <!-- 중앙 AI ANALYZING 필 (absolute) -->
+      <div class="organize__middle">
+        <div class="analyzing-pill" id="analyzingPill">AI ANALYZING</div>
+      </div>
+
+      <!-- 우측 결과 패널 (col3 = 340px) -->
       <div class="organize__output" id="organizeOutput">
         <p class="output-kicker">⌁ AI STRUCTURED OUTPUT</p>
         <div class="output-block" id="outCategory">
@@ -145,6 +149,7 @@
   <!-- ================= 03 AI INSIGHT ================= -->
   <section class="section section--insight" id="insight">
     <div class="section-head">
+      <span class="section-eyebrow">03 AI INSIGHT</span>
       <h2 class="section-title">당신의 메모, 이야기가 되다.</h2>
       <p class="section-desc">흩어진 메모들 속에서 의미를 찾습니다.<br>주간 인사이트와 다음 할 일을 AI가 제안합니다.</p>
     </div>
@@ -217,6 +222,7 @@
   <!-- ================= 04 FIND ================= -->
   <section class="section section--find" id="find">
     <div class="section-head">
+      <span class="section-eyebrow">04 FIND</span>
       <h2 class="section-title">기억하지 마세요<br>AI가 찾아낼게요.</h2>
       <p class="section-desc">키워드를 정확히 기억하지 못해도 괜찮습니다. 문맥과 의도를 이해하는 스마트<br>검색으로 당신의 파편화된 기록들을 하나의 맥락으로 연결합니다.</p>
     </div>

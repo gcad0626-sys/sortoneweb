@@ -60,22 +60,27 @@ introTl
     ease: "power3.out"
   }, "-=1.0")
   .from(".intro__qr", { y: 20, opacity: 0, duration: 1.0 }, "-=0.6")
-  .to(".qr-label .highlight-text", { backgroundSize: "100% 100%", duration: 0.8, ease: "power2.out" }, "-=0.3")
-  .fromTo(".card-1", { autoAlpha: 0, scale: 0.88, y: 8 }, { autoAlpha: 1, scale: 1, y: 0, duration: 1.1, ease: "back.out(1.4)" }, 0.4)
-  .fromTo(".card-2", { autoAlpha: 0, scale: 0.88, y: 8 }, { autoAlpha: 1, scale: 1, y: 0, duration: 1.1, ease: "back.out(1.4)" }, ">-0.6")
-  .fromTo(".card-3", { autoAlpha: 0, scale: 0.88, y: 8 }, { autoAlpha: 1, scale: 1, y: 0, duration: 1.1, ease: "back.out(1.4)" }, ">-0.6")
-  .fromTo(".card-4", { autoAlpha: 0, scale: 0.88, y: 8 }, { autoAlpha: 1, scale: 1, y: 0, duration: 1.1, ease: "back.out(1.4)" }, ">-0.6")
-  .to("#phone1", {
-    keyframes: [
-      { rotation: 2.5 },
-      { rotation: -2.5 },
-      { rotation: 1.5 },
-      { rotation: -1.5 },
-      { rotation: 0 }
-    ],
-    duration: 0.4,
-    ease: "none"
-  }, ">+0.1");
+  .to(".qr-label .highlight-text", { backgroundSize: "100% 100%", duration: 0.8, ease: "power2.out" }, "-=0.3");
+
+// Phone mockup: 별도 애니메이션 (페이지 최상단에서도 안정적으로 동작)
+gsap.from(".phone-mockup", {
+  y: 40,
+  opacity: 0,
+  scale: 0.95,
+  duration: 1.4,
+  ease: "power3.out",
+  delay: 0.6
+});
+
+// 오버레이 카드: 목업 등장 후 뿅뿅 순서대로 팝업
+gsap.to(".overlay-card", {
+  opacity: 1,
+  y: 0,
+  duration: 0.55,
+  stagger: 0.18,
+  ease: "back.out(1.8)",
+  delay: 1.4  // 목업 등장(0.6 + 1.4s duration) 이후 시작
+});
 
 // Continuous shake for AI text (with initial delay to wait for intro animation)
 gsap.to(".intro__title em", {
@@ -94,7 +99,7 @@ gsap.to(".intro__title em", {
 
 // subtle mouse-follow micro move on the intro visual
 const introVisual = document.getElementById("introVisual");
-const phone1 = document.getElementById("phone1");
+const phoneMockup = document.querySelector(".phone-mockup");
 const badges = gsap.utils.toArray(".float-badge");
 
 if (window.matchMedia("(pointer: fine)").matches) {
@@ -103,7 +108,7 @@ if (window.matchMedia("(pointer: fine)").matches) {
     const relX = (e.clientX - rect.left) / rect.width - 0.5;
     const relY = (e.clientY - rect.top) / rect.height - 0.5;
 
-    gsap.to(phone1, {
+    gsap.to(phoneMockup, {
       x: relX * 14,
       y: relY * 10,
       duration: 1.2,
@@ -112,7 +117,7 @@ if (window.matchMedia("(pointer: fine)").matches) {
   });
 
   introVisual.addEventListener("mouseleave", () => {
-    gsap.to(phone1, { x: 0, y: 0, duration: 1 });
+    gsap.to(phoneMockup, { x: 0, y: 0, duration: 1 });
   });
 }
 
@@ -139,13 +144,6 @@ badges.forEach((b, i) => {
 ========================================================= */
 const organizeStage = document.getElementById("organizeStage");
 
-// prep the SVG paths for scrub-draw
-const paths = gsap.utils.toArray("#organizeConnector path");
-paths.forEach(p => {
-  const len = p.getTotalLength();
-  p.style.strokeDasharray = len;
-  p.style.strokeDashoffset = len;
-});
 
 const organizeTl = gsap.timeline({
   scrollTrigger: {
@@ -159,22 +157,15 @@ const organizeTl = gsap.timeline({
 });
 
 organizeTl
-  // 1. text gets typed / focus state settles (phone already visible)
-  .to(".phone--input .phone__input-area", { boxShadow: "inset 0 0 0 1.5px rgba(0,0,0,0.08)", duration: 0.4 })
-  .to("#analyzingPill", { opacity: 1, y: 0, scale: 1, duration: 0.5 }, "-=0.1")
-  .to(".suggest-tags .chip", { opacity: 1, duration: 0.4, stagger: 0.08 }, "-=0.2")
+  // 1. AI ANALYZING 필 등장
+  .to("#analyzingPill", { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.8)" })
 
-  // 2. lines draw from phone to output card
-  .to("#pathA", { strokeDashoffset: 0, duration: 0.6 }, "+=0.1")
-  .to("#pathB", { strokeDashoffset: 0, duration: 0.6 }, "-=0.45")
-  .to("#pathC", { strokeDashoffset: 0, duration: 0.6 }, "-=0.45")
+  // 2. 아웃풋 블록 순서대로 나타남
+  .to("#outCategory", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, "-=0.2")
+  .to("#outTags",     { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, "-=0.25")
+  .to("#outScore",    { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, "-=0.25")
 
-  // 3. output blocks click into place, staggered — "착착 분류"
-  .to("#outCategory", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, "-=0.3")
-  .to("#outTags", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, "-=0.25")
-  .to("#outScore", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, "-=0.25")
-
-  // 4. fade the analyzing pill back out once classification completes
+  // 3. 분류 완료 후 필 페이드 아웃
   .to("#analyzingPill", { opacity: 0, y: -6, scale: 0.9, duration: 0.4 }, "+=0.2");
 
 /* =========================================================

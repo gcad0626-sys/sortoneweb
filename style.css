@@ -1,5 +1,5 @@
 /* =====================================================
-   SortOne — Editorial minimal design system
+   SortOne ??Editorial minimal design system
 ===================================================== */
 
 :root{
@@ -289,7 +289,34 @@ ul{ margin:0; padding:0; list-style:none; }
   align-items: center;
   min-height: 560px;
 }
-.organize__phone-wrap{ display:flex; justify-content:center; }
+.organize__phone-wrap{ display:flex; justify-content:center; align-items:center; }
+/* grid col2 spacer — middle 콘텐츠는 absolute이므로 이 div가 col2를 점유해 output을 col3로 밀어냄 */
+.organize__gap{ /* empty spacer */ }
+
+.organize-phone-img{
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  border-radius: 36px;
+  box-shadow: 0 40px 90px -30px rgba(0,0,0,.22), 0 10px 30px -10px rgba(0,0,0,.08);
+  display: block;
+}
+
+/* 중앙 AI ANALYZING 영역 — grid 흐름에서 제외, 전체 컬럼 스팬 */
+.organize__middle{
+  grid-column: 1 / -1;
+  grid-row: 1;
+  position: absolute;
+  left: 340px;
+  right: 340px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  pointer-events: none;
+}
 
 .phone--input .phone__input-area{
   margin: 4px 22px 14px;
@@ -309,18 +336,17 @@ ul{ margin:0; padding:0; list-style:none; }
 @keyframes caretBlink{ 50%{ opacity: 0; } }
 
 .analyzing-pill{
-  position:absolute;
-  right: 16px; bottom: 16px;
+  pointer-events: auto;
   background: var(--accent);
   color: #fff;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: .04em;
-  padding: 9px 14px;
+  letter-spacing: .05em;
+  padding: 11px 20px;
   border-radius: 100px;
   opacity: 0;
   transform: translateY(6px) scale(.9);
-  box-shadow: 0 10px 24px -6px rgba(255,59,48,.55);
+  box-shadow: 0 10px 28px -6px rgba(255,59,48,.55);
 }
 .phone__suggest{ padding: 0 22px 14px; }
 .suggest-label{ font-size: 11px; font-weight: 700; color: var(--ink-faint); margin: 0 0 10px; }
@@ -348,6 +374,7 @@ ul{ margin:0; padding:0; list-style:none; }
 }
 
 .organize__output{
+  grid-column: 3;   /* 반드시 3번째 컬럼에 고정 */
   background: var(--panel);
   border-radius: 24px;
   padding: 32px 28px;
@@ -431,7 +458,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .side-card__row{ display:flex; justify-content: space-between; font-size: 13px; font-weight: 600; }
 .side-card__row b{ color: var(--accent); }
 .side-card__list li{ font-size: 13px; font-weight: 600; padding: 5px 0; color: var(--ink); }
-.side-card__list li::before{ content:"— "; color: var(--ink-faint); }
+.side-card__list li::before{ content:"??"; color: var(--ink-faint); }
 .side-quote{ font-size: 13px; line-height: 1.7; color: var(--ink-soft); font-style: italic; padding: 4px 4px; }
 
 /* =================== 04 FIND =================== */
@@ -586,22 +613,86 @@ ul{ margin:0; padding:0; list-style:none; }
   .footer__top{ grid-template-columns: 1fr 1fr; }
 }
 
-@media (prefers-reduced-motion: reduce){
-  *{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+
+/* ===== Phone Mockup (Intro Section) ===== */
+.phone-mockup {
+  width: 340px;
+  margin: 0 auto;
+  position: relative;
+  filter: drop-shadow(0 32px 64px rgba(0,0,0,0.18)) drop-shadow(0 8px 24px rgba(0,0,0,0.10));
 }
 
-
-.card-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
+.mockup-img {
   width: 100%;
-  height: 100%;
-  z-index: 3;
-  opacity: 0;
-  visibility: hidden;
+  height: auto;
+  display: block;
 }
-.card-1 { clip-path: inset(22% 4.5% 61.8% 4.5% round 14px); }
-.card-2 { clip-path: inset(47.2% 4.5% 38.6% 4.5% round 14px); }
-.card-3 { clip-path: inset(62.6% 4.5% 23.2% 4.5% round 14px); }
-.card-4 { clip-path: inset(78.1% 4.5% 8.8% 4.5% round 14px); }
+
+/* ===== Overlay Cards (이미지 위 팝업 애니메이션 카드) ===== */
+.overlay-card {
+  position: absolute;
+  left: 6%;
+  width: 88%;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 11px 13px 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.13), 0 2px 6px rgba(0,0,0,0.07);
+
+  /* 애니메이션 초기 상태: 숨겨진 채로 살짝 아래 */
+  opacity: 0;
+  transform: translateY(20px);
+  will-change: opacity, transform;
+}
+
+/* 이미지 내 카드 위치에 맞게 top 조정 (Mockup0.png 기준) */
+.overlay-card--pinned {
+  top: 20%;
+  background: #f7f0ff;  /* 연보라 — 중요 메모 강조 */
+}
+.overlay-card--1 { top: 47%; }
+.overlay-card--2 { top: 64%; }
+.overlay-card--3 { top: 81%; }
+
+.oc-date {
+  font-size: 9.5px;
+  color: #aaa;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.oc-tags { display: flex; gap: 5px; margin-top: 7px; }
+.oc-badge--work     { background: rgba(99,168,237,0.14); color: #63a8ed; }
+.oc-badge--priority { background: rgba(99,168,237,0.14); color: #63a8ed; }
+
+.oc-meta {
+  font-size: 9.5px;
+  color: #bbb;
+  margin-bottom: 3px;
+  font-weight: 600;
+}
+.oc-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.oc-body {
+  font-size: 10.5px;
+  color: #888;
+  line-height: 1.4;
+  margin-bottom: 7px;
+}
+.oc-badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: #eef3ff;
+  color: #63a8ed;
+}
+.oc-badge--idea {
+  background: #f0fff4;
+  color: #3dbd7d;
+}
