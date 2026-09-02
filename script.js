@@ -139,34 +139,80 @@ badges.forEach((b, i) => {
   });
 });
 
+/* Intro exit subtle interaction on scroll down */
+gsap.timeline({
+  scrollTrigger: {
+    trigger: "#intro",
+    start: "top -10%",
+    toggleActions: "play reverse play reverse"
+  }
+})
+.to(".intro__copy", { y: -40, opacity: 0.5, duration: 0.8, ease: "power2.inOut" }, 0)
+.to(".intro__visual", { scale: 0.98, duration: 0.8, ease: "power2.inOut" }, 0);
+
 /* =========================================================
-   02 AI ORGANIZE — pinned scrubbing keyword classification
+   02 AI ORGANIZE — Dynamic Scrubbing Interaction
 ========================================================= */
-const organizeStage = document.getElementById("organizeStage");
-
-
 const organizeTl = gsap.timeline({
   scrollTrigger: {
     trigger: "#organize",
     start: "top top",
-    end: "+=140%",
-    scrub: 0.6,
+    end: "+=250%",
+    scrub: 1,
     pin: true,
     anticipatePin: 1
   }
 });
 
+const typeTarget = document.querySelector(".editor-box");
+const textToType = "신규 프로젝트 킥오프 미팅 요약: 비즈니스 성장 전략 및 핵심 성과 도출을 위한 새로운 아이디어 논의.";
+const typeObj = { progress: 0 };
+const scoreObj = { val: 0 };
+const scoreEl = document.getElementById("scoreVal");
+
 organizeTl
-  // 1. AI ANALYZING 필 등장
-  .to("#analyzingPill", { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "back.out(1.8)" })
+  // Step 1 (입력): 기존 텍스트 지우고 타이핑 효과 시작
+  .call(() => { if(typeTarget) typeTarget.innerText = ""; }) // 기존 텍스트 초기화
+  .to(typeObj, {
+    progress: 100,
+    duration: 2.5,
+    ease: "none",
+    onUpdate: function() {
+      const length = Math.floor((typeObj.progress / 100) * textToType.length);
+      if(typeTarget) typeTarget.innerText = textToType.substring(0, length) + "|";
+    }
+  }, 0)
+  
+  // Step 2 (분석): AI ANALYZING 배지 펄스 활성화
+  .to("#analyzingPill", {
+    scale: 1.15,
+    boxShadow: "0 0 0 20px rgba(255,59,48, 0)",
+    duration: 1.2,
+    ease: "power2.out"
+  }, "+=0.2")
+  .to("#analyzingPill", { scale: 1, duration: 0.5 }, "-=0.5") // 펄스 후 원래 크기로 복귀
 
-  // 2. 아웃풋 블록 순서대로 나타남
-  .to("#outCategory", { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, "-=0.2")
-  .to("#outTags",     { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, "-=0.25")
-  .to("#outScore",    { opacity: 1, y: 0, duration: 0.5, ease: "back.out(1.6)" }, "-=0.25")
+  // Step 3 (분류/이동): 우측 패널의 카테고리 및 태그들이 왼쪽에서부터 날아오기
+  .from("#outCategory .output-value, #outTags .chip", {
+    x: -550, // 좌측 스마트폰 부근에서 출발
+    y: 120,
+    opacity: 0,
+    scale: 0.3,
+    stagger: 0.3,
+    duration: 2,
+    ease: "power3.out"
+  }, "-=0.5")
 
-  // 3. 분류 완료 후 필 페이드 아웃
-  .to("#analyzingPill", { opacity: 0, y: -6, scale: 0.9, duration: 0.4 }, "+=0.2");
+  // Step 4 (스코어): CONFIDENCE SCORE 카운트업
+  .to(scoreObj, {
+    val: 98,
+    duration: 1.5,
+    ease: "power2.out",
+    onUpdate: function() {
+      if(scoreEl) scoreEl.innerText = Math.round(scoreObj.val);
+    }
+  }, "-=1.0");
+
 
 /* =========================================================
    03 AI INSIGHT — staggered reveal of stats & cards

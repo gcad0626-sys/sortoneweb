@@ -111,12 +111,11 @@
     </div>
 
     <div class="organize__stage" id="organizeStage">
-      <div class="organize__phone-wrap">
-        <img src="img/w2.png" alt="메모 입력 화면" class="organize-phone-img">
+      <div class="organize__phone-wrap" style="position: relative;">
+        <img src="img/w2.png" alt="메모 입력 화면" class="organize-phone-img" id="organizePhone">
+        <div class="editor-box"></div>
       </div>
 
-      <!-- 중간 grid spacer (organize__middle, SVG는 absolute이므로 이 div가 col2를 점유) -->
-      <div class="organize__gap"></div>
 
       <!-- 중앙 AI ANALYZING 필 (absolute) -->
       <div class="organize__middle">
@@ -140,7 +139,7 @@
         </div>
         <div class="output-block" id="outScore">
           <span class="output-label">CONFIDENCE SCORE</span>
-          <span class="output-value output-value--score">98%</span>
+          <span class="output-value output-value--score"><span id="scoreVal">0</span>%</span>
         </div>
       </div>
     </div>

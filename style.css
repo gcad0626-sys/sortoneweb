@@ -285,37 +285,24 @@ ul{ margin:0; padding:0; list-style:none; }
 .organize__stage{
   position: relative;
   display: grid;
-  grid-template-columns: 340px 1fr 340px;
+  grid-template-columns: 400px 1fr 340px;
   align-items: center;
   min-height: 560px;
 }
 .organize__phone-wrap{ display:flex; justify-content:center; align-items:center; }
-/* grid col2 spacer — middle 콘텐츠는 absolute이므로 이 div가 col2를 점유해 output을 col3로 밀어냄 */
-.organize__gap{ /* empty spacer */ }
 
 .organize-phone-img{
   width: 100%;
-  max-width: 300px;
+  max-width: 400px;
   height: auto;
-  border-radius: 36px;
-  box-shadow: 0 40px 90px -30px rgba(0,0,0,.22), 0 10px 30px -10px rgba(0,0,0,.08);
   display: block;
 }
 
-/* 중앙 AI ANALYZING 영역 — grid 흐름에서 제외, 전체 컬럼 스팬 */
 .organize__middle{
-  grid-column: 1 / -1;
-  grid-row: 1;
-  position: absolute;
-  left: 340px;
-  right: 340px;
-  top: 0;
-  bottom: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 5;
-  pointer-events: none;
 }
 
 .phone--input .phone__input-area{
@@ -344,10 +331,32 @@ ul{ margin:0; padding:0; list-style:none; }
   letter-spacing: .05em;
   padding: 11px 20px;
   border-radius: 100px;
-  opacity: 0;
-  transform: translateY(6px) scale(.9);
   box-shadow: 0 10px 28px -6px rgba(255,59,48,.55);
 }
+.analyzing-pill.is-pulsing {
+  animation: badgePulse 1.5s infinite;
+}
+@keyframes badgePulse {
+  0% { box-shadow: 0 0 0 0 rgba(255,59,48,.6); transform: scale(1); }
+  70% { box-shadow: 0 0 0 16px rgba(255,59,48, 0); transform: scale(1.05); }
+  100% { box-shadow: 0 0 0 0 rgba(255,59,48, 0); transform: scale(1); }
+}
+
+.editor-box {
+  position: absolute;
+  top: 36%;
+  left: 12%;
+  width: 76%;
+  padding: 0 20px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  text-align: left;
+  box-sizing: border-box;
+  word-break: keep-all;
+  white-space: pre-wrap;
+}
+
 .phone__suggest{ padding: 0 22px 14px; }
 .suggest-label{ font-size: 11px; font-weight: 700; color: var(--ink-faint); margin: 0 0 10px; }
 .suggest-tags{ display:flex; flex-wrap: wrap; gap: 8px; }
@@ -360,8 +369,8 @@ ul{ margin:0; padding:0; list-style:none; }
 
 .organize__connector{
   position: absolute;
-  top: 0; left: 340px;
-  width: calc(100% - 680px);
+  top: 0; left: 400px;
+  width: calc(100% - 740px);
   height: 100%;
   pointer-events: none;
 }
@@ -390,8 +399,6 @@ ul{ margin:0; padding:0; list-style:none; }
   display:flex; flex-direction: column; gap: 10px;
   padding-top: 16px;
   border-top: 1px solid var(--line);
-  opacity: 0;
-  transform: translateY(14px);
 }
 .output-block:first-of-type{ border-top: none; padding-top: 0; }
 .output-label{ font-size: 10.5px; font-weight: 700; letter-spacing: .06em; color: var(--ink-faint); }
