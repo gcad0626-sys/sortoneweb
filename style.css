@@ -497,7 +497,7 @@ ul{ margin:0; padding:0; list-style:none; }
 .side-quote{ font-size: 13px; line-height: 1.7; color: var(--ink-soft); font-weight: 500; text-align: center; margin-top: 20px; color: var(--ink-faint); }
 
 /* =================== 04 FIND =================== */
-.section-header--find { text-align: center; margin-bottom: 110px; }
+.section-header--find { text-align: center; margin-bottom: 80px; }
 
 .find__stage{
   display: flex;
@@ -538,7 +538,6 @@ ul{ margin:0; padding:0; list-style:none; }
   border: 1px solid var(--line);
   box-shadow: 0 4px 12px rgba(0,0,0,0.02);
   opacity: 0;
-  transform: translateX(-24px);
 }
 .result-card--dim{ background: var(--panel); border: 1px solid var(--line); box-shadow: none; padding-right: 20px; }
 .result-card__tags{ display:flex; align-items: center; gap: 8px; margin-bottom: 12px; }

@@ -259,23 +259,26 @@ insightTl
 const findTl = gsap.timeline({
   scrollTrigger: {
     trigger: "#find",
-    start: "top 60%",
-    toggleActions: "play none none reverse"
+    start: "center center",
+    end: "+=150%",
+    pin: true,
+    scrub: 1,
+    anticipatePin: 1
   }
 });
 
+// Set initial states for elements that will be scrubbed
+gsap.set(".search-tags-row, [data-find-result]", { y: -15, opacity: 0 });
+gsap.set(".find-phone-img", { y: 20, opacity: 0 });
+
 findTl
-  .from(".find__panel .search-bar", { y: 20, opacity: 0, duration: 0.7, ease: EASE_GSAP })
-  .from(".search-section-label", { opacity: 0, duration: 0.4 }, "-=0.3")
-  .from("[data-find-tag]", { x: -16, opacity: 0, duration: 0.5, stagger: 0.08, ease: EASE_GSAP }, "-=0.2")
-  .to("[data-find-result]", {
-    opacity: 1,
-    x: 0,
-    duration: 0.7,
-    stagger: 0.15,
-    ease: EASE_GSAP
-  }, "-=0.2")
-  .to(".find-phone-img", { y: 0, opacity: 1, duration: 0.9, ease: EASE_GSAP }, "-=0.9");
+  // Step 1: Left search bar border highlights
+  .to(".find__panel .search-bar", { borderColor: "#4396FF", boxShadow: "0 0 0 2px rgba(67, 150, 255, 0.15)", duration: 1 })
+  // Step 2: Tags and result cards slide down smoothly
+  .to(".search-tags-row", { y: 0, opacity: 1, duration: 1 }, "+=0.5")
+  .to("[data-find-result]", { y: 0, opacity: 1, duration: 1.5, stagger: 0.4 }, "-=0.5")
+  // Step 3: Right smartphone mockup screen naturally fades in
+  .to(".find-phone-img", { y: 0, opacity: 1, duration: 2 }, "-=1");
 
 /* =========================================================
    SECTION HEADERS REVEAL
