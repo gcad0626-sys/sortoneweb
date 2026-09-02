@@ -145,9 +145,8 @@
     </div>
   </section>
 
-  <!-- ================= 03 AI INSIGHT ================= -->
   <section class="section section--insight" id="insight">
-    <div class="section-head">
+    <div class="section-head section-head--insight">
       <span class="section-eyebrow">03 AI INSIGHT</span>
       <h2 class="section-title">당신의 메모, 이야기가 되다.</h2>
       <p class="section-desc">흩어진 메모들 속에서 의미를 찾습니다.<br>주간 인사이트와 다음 할 일을 AI가 제안합니다.</p>
@@ -155,65 +154,38 @@
 
     <div class="insight__stage">
       <div class="insight__col insight__col--left" data-stagger="left">
-        <span class="pill-label">— WEEKLY INSIGHT</span>
+        <span class="pill-label pill-label--insight"><span class="pill-line"></span>WEEKLY INSIGHT</span>
         <h3 class="insight__heading">이번 주의 핵심 통찰</h3>
-        <p class="insight__text">프로젝트 관리와 효율적 소통이 업무 생산성을 15% 향상시켰습니다.</p>
+        <p class="insight__text">프로젝트 관리와 효율적 소통이 업무 생산성을<br><span class="text-accent">15% 향상</span> 시켰습니다.</p>
         <div class="insight__stats">
           <div class="stat">
             <span class="stat__label">작성된 메모</span>
-            <span class="stat__value" data-count="24">0</span>
+            <span class="stat__value"><span id="insightStatCount">0</span>개</span>
           </div>
           <div class="stat">
-            <span class="stat__label">주간 증감률</span>
-            <span class="stat__value stat__value--pos">+12%</span>
+            <span class="stat__label">분석 효율</span>
+            <span class="stat__value stat__value--pos">+<span id="insightStatEff">0</span>%</span>
           </div>
         </div>
       </div>
 
       <div class="insight__col insight__col--center" data-stagger="center">
-        <div class="phone phone--insight">
-          <div class="phone__topbar">
-            <span class="phone__appname">SortOne</span>
-            <span class="phone__icons">⌕ ⚙ 🅦</span>
-          </div>
-          <div class="phone__body phone__body--blue">
-            <p class="phone__insight-label">WEEKLY INSIGHT</p>
-            <h4 class="phone__insight-title">이번 주 핵심 통찰</h4>
-            <p class="phone__insight-desc">프로젝트 관리와 효율적 소통이 업무 생산성 15% 향상 시켰습니다.</p>
-            <div class="phone__insight-row">
-              <div><span class="mini-label">작성된 메모</span><span class="mini-value">24개</span></div>
-              <div><span class="mini-label">증감 추세</span><span class="mini-value mini-value--pos">+12%</span></div>
-            </div>
-            <div class="insight-card">
-              <p class="insight-card__label">분석 현황</p>
-              <div class="progress-row"><span>시장 분석 보고서 요약</span><span>80%</span></div>
-              <div class="progress-track"><div class="progress-bar" style="width:80%"></div></div>
-              <div class="progress-row"><span>제안 문서 #004 준비하기</span><span>45%</span></div>
-              <div class="progress-track"><div class="progress-bar progress-bar--alt" style="width:45%"></div></div>
-            </div>
-            <div class="insight-card">
-              <p class="insight-card__label">실행 항목</p>
-              <div class="action-row"><span class="dot-mark dot-mark--red"></span>디자인 팀 검토 미팅 예약</div>
-              <div class="action-row"><span class="dot-mark dot-mark--yellow"></span>사용자 인터뷰 질문지 리스트업</div>
-            </div>
-            <span class="phone__fab">+</span>
-          </div>
-        </div>
+        <img src="img/ai.jpg" alt="AI Insight" class="insight-center-img">
       </div>
 
       <div class="insight__col insight__col--right" data-stagger="right">
         <div class="side-card">
           <p class="side-card__label">ANALYSIS STATUS</p>
-          <div class="side-card__row"><span>시장 분석 보고서 요약</span><b>80%</b></div>
+          <div class="side-card__row"><span>시장 분석 보고서 요약</span><b class="text-accent">85%</b></div>
         </div>
         <div class="side-card">
           <p class="side-card__label">ACTION ITEMS</p>
           <ul class="side-card__list">
-            <li>디자인 팀 검토 미팅 예약</li>
-            <li>사용자 인터뷰 질문지 리스트업</li>
+            <li><span class="dot dot--red"></span>디자인 팀 검토 미팅 예약</li>
+            <li><span class="dot dot--green"></span>사용자 인터뷰 질문지 리스트업</li>
           </ul>
         </div>
-        <p class="side-quote">"AI가 당신의 기록 습관을 분석하여 최적의 생산성 루틴을 제안합니다."</p>
+        <p class="side-quote">"AI가 당신의 기록 습관을 분석하여 최적<br>의 생산성 루틴을 제안합니다."</p>
       </div>
     </div>
   </section>

@@ -18,19 +18,6 @@ ScrollTrigger.create({
   }
 });
 
-sections.forEach((section) => {
-  ScrollTrigger.create({
-    trigger: section,
-    start: "top 55%",
-    end: "bottom 55%",
-    onToggle: (self) => {
-      if (!self.isActive) return;
-      const key = section.id;
-      navLinks.forEach(l => l.classList.toggle("is-active", l.dataset.nav === key));
-      dots.forEach(d => d.classList.toggle("is-active", d.dataset.dot === key));
-    }
-  });
-});
 
 /* =========================================================
    01 INTRO — reveal + mouse micro-move
@@ -156,7 +143,7 @@ gsap.timeline({
 const organizeTl = gsap.timeline({
   scrollTrigger: {
     trigger: "#organize",
-    start: "top top",
+    start: "center center",
     end: "+=250%",
     scrub: 1,
     pin: true,
@@ -215,43 +202,56 @@ organizeTl
 
 
 /* =========================================================
-   03 AI INSIGHT — staggered reveal of stats & cards
+   03 AI INSIGHT — Pinned Scrubbing Interaction
 ========================================================= */
 const insightTl = gsap.timeline({
   scrollTrigger: {
     trigger: "#insight",
-    start: "top 65%",
-    once: true
+    start: "center center", // 화면 중앙에 예쁘게 배치되었을 때 고정
+    end: "+=200%",    // 200% 만큼 스크롤 고정
+    scrub: 1,         // 스크러빙
+    pin: true,
+    anticipatePin: 1
   }
 });
 
-insightTl
-  .from("[data-stagger='left'] > *", { y: 30, opacity: 0, duration: 0.8, stagger: 0.1, ease: EASE_GSAP })
-  .from("[data-stagger='center'] .phone", { y: 50, opacity: 0, duration: 0.9, ease: EASE_GSAP }, "-=0.6")
-  .from(".insight-card", { y: 24, opacity: 0, duration: 0.6, stagger: 0.12, ease: EASE_GSAP }, "-=0.5")
-  .from("[data-stagger='right'] > *", { y: 30, opacity: 0, duration: 0.8, stagger: 0.12, ease: EASE_GSAP }, "-=0.7")
-  .from(".progress-bar", { scaleX: 0, duration: 0.8, stagger: 0.15, ease: "power2.out" }, "-=0.5");
+const insightStatCount = document.getElementById("insightStatCount");
+const insightStatEff = document.getElementById("insightStatEff");
+const insightStatObj1 = { val: 0 };
+const insightStatObj2 = { val: 0 };
 
-// animated count-up for stat number
-document.querySelectorAll("[data-count]").forEach(el => {
-  const target = parseInt(el.dataset.count, 10);
-  ScrollTrigger.create({
-    trigger: el,
-    start: "top 80%",
-    once: true,
-    onEnter: () => {
-      gsap.to(el, {
-        innerText: target,
-        duration: 1.4,
-        ease: "power2.out",
-        snap: { innerText: 1 },
-        onUpdate: function () {
-          el.innerText = Math.round(this.targets()[0].innerText);
-        }
-      });
-    }
-  });
-});
+// 요소 초기 상태 (타임라인 전)
+gsap.set(".insight__col--left > *:not(.insight__stats)", { opacity: 0, y: 30 });
+gsap.set(".insight__stats", { opacity: 0, y: 30 });
+gsap.set(".insight-center-img", { opacity: 0, y: 50 });
+gsap.set(".side-card", { opacity: 0, y: 40 });
+gsap.set(".side-quote", { opacity: 0 });
+
+insightTl
+  // Step 1: 좌측 텍스트 및 통계
+  .to(".insight__col--left > *:not(.insight__stats)", { opacity: 1, y: 0, duration: 1, stagger: 0.2 })
+  .to(".insight__stats", { opacity: 1, y: 0, duration: 1 }, "-=0.5")
+  .to(insightStatObj1, { 
+    val: 24, 
+    duration: 1.5, 
+    ease: "power2.out",
+    onUpdate: () => { if(insightStatCount) insightStatCount.innerText = Math.round(insightStatObj1.val); }
+  }, "-=0.5")
+  .to(insightStatObj2, { 
+    val: 15, 
+    duration: 1.5, 
+    ease: "power2.out",
+    onUpdate: () => { if(insightStatEff) insightStatEff.innerText = Math.round(insightStatObj2.val); }
+  }, "-=1.5")
+  
+  // Step 2: 중앙 이미지 슬라이드 업
+  .to(".insight-center-img", { opacity: 1, y: 0, duration: 2, ease: "power2.out" }, "-=0.5")
+  
+  // Step 3: 우측 패널 연동
+  .to(".insight-card, .side-card", { opacity: 1, y: 0, duration: 1.5, stagger: 0.5, ease: "power2.out" }, "-=1")
+  
+  // Step 4: 하단 카피
+  .to(".side-quote", { opacity: 1, duration: 1.5, ease: "power2.out" }, "-=0.5");
 
 /* =========================================================
    04 FIND — search results unfold + tag slide-in
@@ -279,6 +279,24 @@ findTl
   .from(".find-recent__item", { x: 20, opacity: 0, duration: 0.5, stagger: 0.08, ease: EASE_GSAP }, "-=0.6");
 
 /* =========================================================
+   SECTION HEADERS REVEAL
+========================================================= */
+gsap.utils.toArray(".section-header, .section-head").forEach(head => {
+  gsap.from(head.children, {
+    scrollTrigger: {
+      trigger: head,
+      start: "top 85%",
+      toggleActions: "play none none reverse"
+    },
+    y: 30,
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.15,
+    ease: EASE_GSAP
+  });
+});
+
+/* =========================================================
    FINAL CTA — reveal + floating hover already handled in CSS
 ========================================================= */
 gsap.from("#cta [data-reveal]", {
@@ -296,3 +314,20 @@ gsap.from("#cta [data-reveal]", {
 
 /* refresh on load once fonts/images settle */
 window.addEventListener("load", () => ScrollTrigger.refresh());
+
+/* Navigation active state update (must be at the bottom so it respects pinned sections) */
+function setActive(key) {
+  navLinks.forEach(l => l.classList.toggle("is-active", l.dataset.nav === key));
+  dots.forEach(d => d.classList.toggle("is-active", d.dataset.dot === key));
+}
+
+sections.forEach((section, index) => {
+  ScrollTrigger.create({
+    trigger: section,
+    start: "top 50%",
+    onEnter: () => setActive(section.id),
+    onLeaveBack: () => {
+      if (index > 0) setActive(sections[index - 1].id);
+    }
+  });
+});
