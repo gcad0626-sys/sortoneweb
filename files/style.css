@@ -162,7 +162,7 @@ ul{ margin:0; padding:0; list-style:none; }
   letter-spacing: -0.03em;
   margin: 0 0 28px;
 }
-.intro__title .line{ display:block; overflow:hidden; }
+.intro__title .line, .intro__desc .line { display:block; overflow:hidden; }
 .intro__title em{
   font-style: normal;
   color: #63A8ED;
@@ -190,6 +190,12 @@ ul{ margin:0; padding:0; list-style:none; }
   color: var(--ink-faint);
   max-width: 90px;
   line-height: 1.5;
+}
+.qr-label .highlight-text {
+  background-image: linear-gradient(#EEFB85, #EEFB85);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-position: 0 50%;
 }
 
 /* ---- intro visual / floating badges ---- */
@@ -584,7 +590,18 @@ ul{ margin:0; padding:0; list-style:none; }
   *{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
 
-.intro-card {
+
+.card-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
   opacity: 0;
   visibility: hidden;
 }
+.card-1 { clip-path: inset(18.5% 4.5% 66% 4.5% round 14px); }
+.card-2 { clip-path: inset(39.5% 4.5% 46% 4.5% round 14px); }
+.card-3 { clip-path: inset(55% 4.5% 31.5% 4.5% round 14px); }
+.card-4 { clip-path: inset(69% 4.5% 16% 4.5% round 14px); }

@@ -40,7 +40,7 @@ const introTl = gsap.timeline({
   scrollTrigger: {
     trigger: "#intro",
     start: "top 75%",
-    toggleActions: "restart none restart none"
+    toggleActions: "play none none none"
   }
 });
 
@@ -48,28 +48,36 @@ introTl
   .from(".intro__title .line", {
     yPercent: 130,
     opacity: 0,
-    duration: 1.1,
-    stagger: 0.09
+    duration: 2.4,
+    stagger: 0.22,
+    ease: "power3.out"
   })
-  .from(".intro__desc", { y: 24, opacity: 0, duration: 0.9 }, "-=0.7")
-  .from(".intro__qr", { y: 20, opacity: 0, duration: 0.8 }, "-=0.6")
-  .from("#phone1", { 
-    y: 80, 
-    opacity: 0, 
-    scale: 0.85, 
-    duration: 1.2, 
-    ease: "back.out(1.5)" 
-  }, "-=0.9")
-  .from(".float-badge", {
-    y: 40,
+  .from(".intro__desc .line", {
+    yPercent: 100,
     opacity: 0,
-    scale: 0,
-    duration: 0.9,
-    stagger: 0.1,
-    ease: "back.out(1.7)"
-  }, "-=1.0");
+    duration: 1.4,
+    stagger: 0.15,
+    ease: "power3.out"
+  }, "-=1.0")
+  .from(".intro__qr", { y: 20, opacity: 0, duration: 1.0 }, "-=0.6")
+  .to(".qr-label .highlight-text", { backgroundSize: "100% 100%", duration: 0.8, ease: "power2.out" }, "-=0.3")
+  .fromTo(".card-1", { autoAlpha: 0, scale: 0.88, y: 8 }, { autoAlpha: 1, scale: 1, y: 0, duration: 1.1, ease: "back.out(1.4)" }, 0.4)
+  .fromTo(".card-2", { autoAlpha: 0, scale: 0.88, y: 8 }, { autoAlpha: 1, scale: 1, y: 0, duration: 1.1, ease: "back.out(1.4)" }, ">-0.6")
+  .fromTo(".card-3", { autoAlpha: 0, scale: 0.88, y: 8 }, { autoAlpha: 1, scale: 1, y: 0, duration: 1.1, ease: "back.out(1.4)" }, ">-0.6")
+  .fromTo(".card-4", { autoAlpha: 0, scale: 0.88, y: 8 }, { autoAlpha: 1, scale: 1, y: 0, duration: 1.1, ease: "back.out(1.4)" }, ">-0.6")
+  .to("#phone1", {
+    keyframes: [
+      { rotation: 2.5 },
+      { rotation: -2.5 },
+      { rotation: 1.5 },
+      { rotation: -1.5 },
+      { rotation: 0 }
+    ],
+    duration: 0.4,
+    ease: "none"
+  }, ">+0.1");
 
-// Continuous shake for AI text
+// Continuous shake for AI text (with initial delay to wait for intro animation)
 gsap.to(".intro__title em", {
   keyframes: [
     { rotation: 8, duration: 0.1 },
@@ -80,7 +88,8 @@ gsap.to(".intro__title em", {
   ],
   ease: "power1.inOut",
   repeat: -1,
-  repeatDelay: 3
+  repeatDelay: 3,
+  delay: 2 // Start shaking after 2 seconds
 });
 
 // subtle mouse-follow micro move on the intro visual
@@ -100,21 +109,10 @@ if (window.matchMedia("(pointer: fine)").matches) {
       duration: 1.2,
       ease: "power3.out"
     });
-
-    badges.forEach((b, i) => {
-      const depth = 1 + (i % 3) * 0.6;
-      gsap.to(b, {
-        x: relX * 10 * depth,
-        y: relY * 8 * depth,
-        duration: 1.4,
-        ease: "power3.out"
-      });
-    });
   });
 
   introVisual.addEventListener("mouseleave", () => {
     gsap.to(phone1, { x: 0, y: 0, duration: 1 });
-    gsap.to(badges, { x: 0, y: 0, duration: 1 });
   });
 }
 
