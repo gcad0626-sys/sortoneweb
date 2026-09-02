@@ -260,13 +260,14 @@ const findTl = gsap.timeline({
   scrollTrigger: {
     trigger: "#find",
     start: "top 60%",
-    once: true
+    toggleActions: "play none none reverse"
   }
 });
 
 findTl
   .from(".find__panel .search-bar", { y: 20, opacity: 0, duration: 0.7, ease: EASE_GSAP })
-  .from("[data-find-tag]", { x: -16, opacity: 0, duration: 0.5, stagger: 0.08, ease: EASE_GSAP }, "-=0.4")
+  .from(".search-section-label", { opacity: 0, duration: 0.4 }, "-=0.3")
+  .from("[data-find-tag]", { x: -16, opacity: 0, duration: 0.5, stagger: 0.08, ease: EASE_GSAP }, "-=0.2")
   .to("[data-find-result]", {
     opacity: 1,
     x: 0,
@@ -274,9 +275,7 @@ findTl
     stagger: 0.15,
     ease: EASE_GSAP
   }, "-=0.2")
-  .from(".find__phone-wrap .phone", { y: 50, opacity: 0, duration: 0.9, ease: EASE_GSAP }, "-=0.9")
-  .from(".find-suggest-tags .chip", { x: 14, opacity: 0, duration: 0.5, stagger: 0.1, ease: EASE_GSAP }, "-=0.5")
-  .from(".find-recent__item", { x: 20, opacity: 0, duration: 0.5, stagger: 0.08, ease: EASE_GSAP }, "-=0.6");
+  .to(".find-phone-img", { y: 0, opacity: 1, duration: 0.9, ease: EASE_GSAP }, "-=0.9");
 
 /* =========================================================
    SECTION HEADERS REVEAL
@@ -310,6 +309,19 @@ gsap.from("#cta [data-reveal]", {
   duration: 0.9,
   stagger: 0.12,
   ease: EASE_GSAP
+});
+
+gsap.to("#cta .highlight-text--blue", {
+  scrollTrigger: {
+    trigger: "#cta",
+    start: "top 70%",
+    toggleActions: "play none none reverse"
+  },
+  backgroundSize: "100% 100%",
+  duration: 0.8,
+  delay: 0.5,
+  stagger: 0.3,
+  ease: "power2.out"
 });
 
 /* refresh on load once fonts/images settle */

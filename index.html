@@ -124,7 +124,7 @@
 
       <!-- 우측 결과 패널 (col3 = 340px) -->
       <div class="organize__output" id="organizeOutput">
-        <p class="output-kicker">⌁ AI STRUCTURED OUTPUT</p>
+        <p class="output-kicker">AI STRUCTURED OUTPUT</p>
         <div class="output-block" id="outCategory">
           <span class="output-label">AUTO CATEGORY</span>
           <span class="output-value output-value--category">MEETING</span>
@@ -132,12 +132,12 @@
         <div class="output-block" id="outTags">
           <span class="output-label">AUTO TAGS</span>
           <div class="output-tags">
-            <span class="chip chip--work">비즈니스 성장</span>
-            <span class="chip chip--proj">핵심 성과</span>
-            <span class="chip chip--idea">아이디어</span>
+            <span class="chip chip--org-blue">비즈니스 성장</span>
+            <span class="chip chip--org-pink">핵심 성과</span>
+            <span class="chip chip--org-green">아이디어</span>
           </div>
         </div>
-        <div class="output-block" id="outScore">
+        <div class="output-block output-block--score" id="outScore">
           <span class="output-label">CONFIDENCE SCORE</span>
           <span class="output-value output-value--score"><span id="scoreVal">0</span>%</span>
         </div>
@@ -192,69 +192,64 @@
 
   <!-- ================= 04 FIND ================= -->
   <section class="section section--find" id="find">
-    <div class="section-head">
+    <div class="section-header section-header--find">
       <span class="section-eyebrow">04 FIND</span>
-      <h2 class="section-title">기억하지 마세요<br>AI가 찾아낼게요.</h2>
+      <h2 class="section-title">기억하지 마세요<br>AI가 찾아낼게요</h2>
       <p class="section-desc">키워드를 정확히 기억하지 못해도 괜찮습니다. 문맥과 의도를 이해하는 스마트<br>검색으로 당신의 파편화된 기록들을 하나의 맥락으로 연결합니다.</p>
     </div>
 
     <div class="find__stage">
       <div class="find__panel" id="findPanel">
-        <div class="search-bar"><span class="search-icon">⌕</span><span class="search-text">신규 프로</span><span class="search-check">✓</span></div>
-        <div class="search-tags">
-          <span class="chip chip--find" data-find-tag>#work</span>
-          <span class="chip chip--find" data-find-tag>#project</span>
+        <div class="search-bar">
+          <span class="search-icon">⌕</span>
+          <span class="search-text">신규 프로</span>
+          <span class="search-check">✓</span>
         </div>
-        <p class="search-section-label">SEARCH RESULTS</p>
+        
+        <div class="search-tags-row">
+          <p class="search-section-label">SEARCH RESULTS</p>
+          <div class="search-tags">
+            <span class="chip chip--find-blue" data-find-tag>#WORK</span>
+            <span class="chip chip--find-pink" data-find-tag>#PROJECT</span>
+          </div>
+        </div>
+        
         <article class="result-card" data-find-result>
-          <div class="result-card__tags"><span class="tag-mini">MEETING</span><span class="tag-mini tag-mini--muted">방금 전</span></div>
+          <div class="result-card__tags">
+            <span class="tag-mini tag-mini--blue">MEETING</span>
+            <span class="tag-mini tag-mini--muted">2023.10.24</span>
+          </div>
           <h4 class="result-card__title">신규 프로젝트 킥오프 회의</h4>
-          <p class="result-card__text">디자인 시스템 개편 일정 및 API 명세서 리뷰.</p>
+          <p class="result-card__text">디자인 시스템 개편 일정 및 API 명세서 리뷰...</p>
           <span class="result-card__arrow">›</span>
         </article>
+        
         <article class="result-card result-card--dim" data-find-result>
-          <p class="result-card__title result-card__title--sm">과거 브랜드 가이드라인 초안</p>
-          <p class="result-card__text">색상과 타이포그래피 시스템 정의 문서</p>
-          <span class="result-card__meta">6주 전</span>
+          <div class="result-card__tags">
+            <span class="tag-mini tag-mini--grey">ARCHIVED</span>
+            <span class="tag-mini tag-mini--muted">2023.09.12</span>
+          </div>
+          <div class="result-card__body">
+            <div class="result-card__content">
+              <p class="result-card__title result-card__title--sm">과거 브랜드 가이드라인 초안</p>
+              <p class="result-card__text">현재는 사용되지 않는 구버전 디자인 시스템...</p>
+            </div>
+            <div class="result-card__action">
+              <span class="archive-icon">🗃</span> 보관됨
+            </div>
+          </div>
         </article>
       </div>
 
-      <div class="find__phone-wrap">
-        <div class="phone phone--find">
-          <div class="phone__topbar">
-            <span class="phone__nav-icon">☰</span>
-            <span class="phone__appname">SortOne</span>
-            <span class="phone__icons">⌕ ⚙ 🅦</span>
-          </div>
-          <div class="phone__body phone__body--blue phone__body--find">
-            <div class="find-search-input">검색어를 입력하세요 (예: 노트 → 노트) <span class="find-check">✓</span></div>
-            <p class="find-suggest-label">AI 스마트 태그</p>
-            <div class="find-suggest-tags">
-              <span class="chip chip--find">디자인 팀 리뷰</span>
-              <span class="chip chip--find">계획중인 라이프</span>
-            </div>
-            <div class="find-recent">
-              <div class="find-recent__row"><span>최근 검색</span><span>모두 지우기</span></div>
-              <div class="find-recent__item"><span class="clock-icon">⏱</span>2024년 사업 기획서 초안<span class="x-icon">×</span></div>
-              <div class="find-recent__item"><span class="clock-icon">⏱</span>건축 미니멀리즘<span class="x-icon">×</span></div>
-              <div class="find-recent__item"><span class="clock-icon">⏱</span>마케팅 회의록 03.12<span class="x-icon">×</span></div>
-            </div>
-            <span class="phone__fab">+</span>
-          </div>
-          <div class="phone__tabbar">
-            <span class="tabbar-item is-active">📝<i>Memo</i></span>
-            <span class="tabbar-item">◇<i>AI</i></span>
-            <span class="tabbar-item">⌕<i>Search</i></span>
-            <span class="tabbar-item">◎<i>Profile</i></span>
-          </div>
-        </div>
+      <div class="find__img-wrap">
+        <img src="img/search.jpg" alt="Search App" class="find-phone-img">
       </div>
     </div>
   </section>
 
   <!-- ================= FINAL CTA ================= -->
   <section class="section section--cta" id="cta">
-    <h2 class="cta__title" data-reveal>당신의 메모,<br>당신의 AI 오거나이저.</h2>
+    <h2 class="cta__title" data-reveal><span class="highlight-text highlight-text--blue">당신의 메모,</span><br><span class="highlight-text highlight-text--blue">당신의 AI 오거나이저.</span></h2>
     <p class="cta__desc" data-reveal>솔트원과 함께 기록의 가치를 재발견하고 더 본질적인 것에 집중하세요.</p>
     <button class="cta__button" id="ctaButton" data-reveal>
       <div class="qr-box qr-box--cta">
