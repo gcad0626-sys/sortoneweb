@@ -1,308 +1,316 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SortOne — 자유롭게 기록하세요. 정리는 AI가 할게요.</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SortOne — 자유롭게 기록하세요. 정리는 AI가 할게요.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+KR:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<!-- ================= HEADER ================= -->
-<header class="header" id="header">
-  <div class="header__inner">
-    <div class="header__logo"><img src="img/logo.png" alt="SortOne" style="height: 24px; vertical-align: middle;"></div>
-    <nav class="header__nav">
-      <a href="#intro" class="nav-link is-active" data-nav="intro">01 INTRO</a>
-      <a href="#organize" class="nav-link" data-nav="organize">02 AI ORGANIZE</a>
-      <a href="#insight" class="nav-link" data-nav="insight">03 AI INSIGHT</a>
-      <a href="#find" class="nav-link" data-nav="find">04 FIND</a>
-    </nav>
-  </div>
-</header>
-
-<!-- ================ PAGE INDICATOR (fixed right) ================ -->
-<div class="page-indicator" id="pageIndicator">
-  <span class="dot is-active" data-dot="intro"></span>
-  <span class="dot" data-dot="organize"></span>
-  <span class="dot" data-dot="insight"></span>
-  <span class="dot" data-dot="find"></span>
-</div>
-
-<main>
-
-  <!-- ================= 01 INTRO ================= -->
-  <section class="section section--intro" id="intro">
-    <div class="intro__grid">
-      <div class="intro__copy">
-        <h1 class="intro__title" data-reveal>
-          <span class="line">자유롭게</span>
-          <span class="line">기록하세요.</span>
-          <span class="line">정리는 <em>AI</em>가</span>
-          <span class="line">할게요.</span>
-        </h1>
-        <p class="intro__desc" data-reveal>
-          <span class="line">메모를 작성하면 AI가 자동으로</span>
-          <span class="line">태그와 카테고리로 정리합니다.</span>
-          <span class="line">집중을 흩트리지 않는 깨끗한 기록 경험.</span>
-        </p>
-        <div class="intro__qr" data-reveal>
-          <div class="qr-box">
-            <img src="img/qr.png" alt="QR Code" width="72" height="72">
-          </div>
-          <span class="qr-label"><span class="highlight-text">SCAN TO USE SORTONE</span></span>
-        </div>
+  <!-- ================= HEADER ================= -->
+  <header class="header" id="header">
+    <div class="header__inner">
+      <div class="header__logo">
+        <a href="" style="display: inline-block;">
+          <img src="img/logo.png" alt="SortOne" style="height: 24px; vertical-align: middle;">
+        </a>
       </div>
+      <nav class="header__nav">
+        <a href="#intro" class="nav-link is-active" data-nav="intro">01 INTRO</a>
+        <a href="#organize" class="nav-link" data-nav="organize">02 AI ORGANIZE</a>
+        <a href="#insight" class="nav-link" data-nav="insight">03 AI INSIGHT</a>
+        <a href="#find" class="nav-link" data-nav="find">04 FIND</a>
+      </nav>
+    </div>
+  </header>
 
-      <div class="intro__visual" id="introVisual">
-        <!-- floating tag badges -->
-        <span class="float-badge fb--1" data-float="1">#WORK</span>
-        <span class="float-badge fb--2" data-float="2">#IDEA</span>
-        <span class="float-badge fb--3" data-float="3">#PROJECT</span>
-        <span class="float-badge fb--4" data-float="4">#MEETING</span>
-        <span class="float-badge fb--5" data-float="5">#DAILY</span>
-        <span class="float-badge fb--6" data-float="6">#MEMO</span>
+  <!-- ================ PAGE INDICATOR (fixed right) ================ -->
+  <div class="page-indicator" id="pageIndicator">
+    <span class="dot is-active" data-dot="intro"></span>
+    <span class="dot" data-dot="organize"></span>
+    <span class="dot" data-dot="insight"></span>
+    <span class="dot" data-dot="find"></span>
+  </div>
 
-        <div class="phone-mockup">
-          <img src="img/Central App Mockup0.png" alt="SortOne 앱 화면" class="mockup-img">
-          <!-- 중요 메모 핀드 카드 -->
-          <div class="overlay-card overlay-card--pinned">
-            <div class="oc-date">2023.10.24</div>
-            <div class="oc-title">신규 프로젝트 마일스톤</div>
-            <div class="oc-body">다음 분기 핵심 과제와 세부 일정을 정리함. 디자인 시스템 고도화 및 접근성 가이드라인 준수가 최우선...</div>
-            <div class="oc-tags">
-              <span class="oc-badge oc-badge--work">#업무</span>
-              <span class="oc-badge oc-badge--priority">#우선순위</span>
+  <main>
+
+    <!-- ================= 01 INTRO ================= -->
+    <section class="section section--intro" id="intro">
+      <div class="intro__grid">
+        <div class="intro__copy">
+          <h1 class="intro__title" data-reveal>
+            <span class="line">자유롭게</span>
+            <span class="line">기록하세요.</span>
+            <span class="line">정리는 <em>AI</em>가</span>
+            <span class="line">할게요.</span>
+          </h1>
+          <p class="intro__desc" data-reveal>
+            <span class="line">메모를 작성하면 AI가 자동으로</span>
+            <span class="line">태그와 카테고리로 정리합니다.</span>
+            <span class="line">집중을 흩트리지 않는 깨끗한 기록 경험.</span>
+          </p>
+          <div class="intro__qr" data-reveal>
+            <div class="qr-box">
+              <img src="img/qr.png" alt="QR Code" width="72" height="72">
+            </div>
+            <span class="qr-label"><span class="highlight-text">SCAN TO USE SORTONE</span></span>
+          </div>
+        </div>
+
+        <div class="intro__visual" id="introVisual">
+          <!-- floating tag badges -->
+          <span class="float-badge fb--1" data-float="1">#WORK</span>
+          <span class="float-badge fb--2" data-float="2">#IDEA</span>
+          <span class="float-badge fb--3" data-float="3">#PROJECT</span>
+          <span class="float-badge fb--4" data-float="4">#MEETING</span>
+          <span class="float-badge fb--5" data-float="5">#DAILY</span>
+          <span class="float-badge fb--6" data-float="6">#MEMO</span>
+
+          <div class="phone-mockup">
+            <img src="img/Central App Mockup0.png" alt="SortOne 앱 화면" class="mockup-img">
+            <!-- 중요 메모 핀드 카드 -->
+            <div class="overlay-card overlay-card--pinned">
+              <div class="oc-date">2023.10.24</div>
+              <div class="oc-title">신규 프로젝트 마일스톤</div>
+              <div class="oc-body">다음 분기 핵심 과제와 세부 일정을 정리함. 디자인 시스템 고도화 및 접근성 가이드라인 준수가 최우선...</div>
+              <div class="oc-tags">
+                <span class="oc-badge oc-badge--work">#업무</span>
+                <span class="oc-badge oc-badge--priority">#우선순위</span>
+              </div>
+            </div>
+            <!-- 최신 메모 카드 3개 -->
+            <div class="overlay-card overlay-card--1">
+              <div class="oc-meta">어제</div>
+              <div class="oc-title">주말 캠핑 체크리스트</div>
+              <div class="oc-body">텐트, 침낭, 화로대, 식재료(고기, 야채, 소스), 랜턴, 보...</div>
+              <span class="oc-badge">개인</span>
+            </div>
+            <div class="overlay-card overlay-card--2">
+              <div class="oc-meta">2일 전</div>
+              <div class="oc-title">차세대 AI 필터링 로직 아이디어</div>
+              <div class="oc-body">사용자의 최근 검색 패턴과 컨텍스트를 분석하여 실...</div>
+              <span class="oc-badge oc-badge--idea">아이디어</span>
+            </div>
+            <div class="overlay-card overlay-card--3">
+              <div class="oc-meta">2023.10.20</div>
+              <div class="oc-title">독서 노트: 미니멀리즘의 힘</div>
+              <div class="oc-body">"불필요한 것을 덜어낼 때 진정 중요한 것이 보인다."</div>
+              <span class="oc-badge">개인</span>
             </div>
           </div>
-          <!-- 최신 메모 카드 3개 -->
-          <div class="overlay-card overlay-card--1">
-            <div class="oc-meta">어제</div>
-            <div class="oc-title">주말 캠핑 체크리스트</div>
-            <div class="oc-body">텐트, 침낭, 화로대, 식재료(고기, 야채, 소스), 랜턴, 보...</div>
-            <span class="oc-badge">개인</span>
-          </div>
-          <div class="overlay-card overlay-card--2">
-            <div class="oc-meta">2일 전</div>
-            <div class="oc-title">차세대 AI 필터링 로직 아이디어</div>
-            <div class="oc-body">사용자의 최근 검색 패턴과 컨텍스트를 분석하여 실...</div>
-            <span class="oc-badge oc-badge--idea">아이디어</span>
-          </div>
-          <div class="overlay-card overlay-card--3">
-            <div class="oc-meta">2023.10.20</div>
-            <div class="oc-title">독서 노트: 미니멀리즘의 힘</div>
-            <div class="oc-body">"불필요한 것을 덜어낼 때 진정 중요한 것이 보인다."</div>
-            <span class="oc-badge">개인</span>
-          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ================= 02 AI ORGANIZE ================= -->
-  <section class="section section--organize" id="organize">
-    <div class="section-head">
-      <span class="section-eyebrow">02 AI ORGANIZE</span>
-      <h2 class="section-title">쓰기만 하세요. 정리는 AI가 합니다.</h2>
-      <p class="section-desc">생각을 기록하는 순간, AI가 내용을 분석하고 정리합니다.<br>분류에 신경 쓰지 말고 오직 기록에만 집중하세요.</p>
-    </div>
-
-    <div class="organize__stage" id="organizeStage">
-      <div class="organize__phone-wrap" style="position: relative;">
-        <img src="img/w2.png" alt="메모 입력 화면" class="organize-phone-img" id="organizePhone">
-        <div class="editor-box"></div>
+    <!-- ================= 02 AI ORGANIZE ================= -->
+    <section class="section section--organize" id="organize">
+      <div class="section-head">
+        <span class="section-eyebrow">02 AI ORGANIZE</span>
+        <h2 class="section-title">쓰기만 하세요. 정리는 AI가 합니다.</h2>
+        <p class="section-desc">생각을 기록하는 순간, AI가 내용을 분석하고 정리합니다.<br>분류에 신경 쓰지 말고 오직 기록에만 집중하세요.</p>
       </div>
 
-
-      <!-- 중앙 AI ANALYZING 필 (absolute) -->
-      <div class="organize__middle">
-        <div class="analyzing-pill" id="analyzingPill">AI ANALYZING</div>
-      </div>
-
-      <!-- 우측 결과 패널 (col3 = 340px) -->
-      <div class="organize__output" id="organizeOutput">
-        <p class="output-kicker">AI STRUCTURED OUTPUT</p>
-        <div class="output-block" id="outCategory">
-          <span class="output-label">AUTO CATEGORY</span>
-          <span class="output-value output-value--category">MEETING</span>
+      <div class="organize__stage" id="organizeStage">
+        <div class="organize__phone-wrap" style="position: relative;">
+          <img src="img/w2.png" alt="메모 입력 화면" class="organize-phone-img" id="organizePhone">
+          <div class="editor-box"></div>
         </div>
-        <div class="output-block" id="outTags">
-          <span class="output-label">AUTO TAGS</span>
-          <div class="output-tags">
-            <span class="chip chip--org-blue">비즈니스 성장</span>
-            <span class="chip chip--org-pink">핵심 성과</span>
-            <span class="chip chip--org-green">아이디어</span>
+
+
+        <!-- 중앙 AI ANALYZING 필 (absolute) -->
+        <div class="organize__middle">
+          <div class="analyzing-pill" id="analyzingPill">AI ANALYZING</div>
+        </div>
+
+        <!-- 우측 결과 패널 (col3 = 340px) -->
+        <div class="organize__output" id="organizeOutput">
+          <p class="output-kicker">AI STRUCTURED OUTPUT</p>
+          <div class="output-block" id="outCategory">
+            <span class="output-label">AUTO CATEGORY</span>
+            <span class="output-value output-value--category">MEETING</span>
           </div>
-        </div>
-        <div class="output-block output-block--score" id="outScore">
-          <span class="output-label">CONFIDENCE SCORE</span>
-          <span class="output-value output-value--score"><span id="scoreVal">0</span>%</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section--insight" id="insight">
-    <div class="section-head section-head--insight">
-      <span class="section-eyebrow">03 AI INSIGHT</span>
-      <h2 class="section-title">당신의 메모, 이야기가 되다.</h2>
-      <p class="section-desc">흩어진 메모들 속에서 의미를 찾습니다.<br>주간 인사이트와 다음 할 일을 AI가 제안합니다.</p>
-    </div>
-
-    <div class="insight__stage">
-      <div class="insight__col insight__col--left" data-stagger="left">
-        <span class="pill-label pill-label--insight"><span class="pill-line"></span>WEEKLY INSIGHT</span>
-        <h3 class="insight__heading">이번 주의 핵심 통찰</h3>
-        <p class="insight__text">프로젝트 관리와 효율적 소통이 업무 생산성을<br><span class="text-accent">15% 향상</span> 시켰습니다.</p>
-        <div class="insight__stats">
-          <div class="stat">
-            <span class="stat__label">작성된 메모</span>
-            <span class="stat__value"><span id="insightStatCount">0</span>개</span>
-          </div>
-          <div class="stat">
-            <span class="stat__label">분석 효율</span>
-            <span class="stat__value stat__value--pos">+<span id="insightStatEff">0</span>%</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="insight__col insight__col--center" data-stagger="center">
-        <img src="img/ai.jpg" alt="AI Insight" class="insight-center-img">
-      </div>
-
-      <div class="insight__col insight__col--right" data-stagger="right">
-        <div class="side-card">
-          <p class="side-card__label">ANALYSIS STATUS</p>
-          <div class="side-card__row"><span>시장 분석 보고서 요약</span><b class="text-accent">85%</b></div>
-        </div>
-        <div class="side-card">
-          <p class="side-card__label">ACTION ITEMS</p>
-          <ul class="side-card__list">
-            <li><span class="dot dot--red"></span>디자인 팀 검토 미팅 예약</li>
-            <li><span class="dot dot--green"></span>사용자 인터뷰 질문지 리스트업</li>
-          </ul>
-        </div>
-        <p class="side-quote">"AI가 당신의 기록 습관을 분석하여 최적<br>의 생산성 루틴을 제안합니다."</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= 04 FIND ================= -->
-  <section class="section section--find" id="find">
-    <div class="section-header section-header--find">
-      <span class="section-eyebrow">04 FIND</span>
-      <h2 class="section-title">기억하지 마세요<br>AI가 찾아낼게요</h2>
-      <p class="section-desc">키워드를 정확히 기억하지 못해도 괜찮습니다. 문맥과 의도를 이해하는 스마트<br>검색으로 당신의 파편화된 기록들을 하나의 맥락으로 연결합니다.</p>
-    </div>
-
-    <div class="find__stage">
-      <div class="find__panel" id="findPanel">
-        <div class="search-bar">
-          <span class="search-icon">⌕</span>
-          <span class="search-text">신규 프로</span>
-          <span class="search-check">✓</span>
-        </div>
-        
-        <div class="search-tags-row">
-          <p class="search-section-label">SEARCH RESULTS</p>
-          <div class="search-tags">
-            <span class="chip chip--find-blue" data-find-tag>#WORK</span>
-            <span class="chip chip--find-pink" data-find-tag>#PROJECT</span>
-          </div>
-        </div>
-        
-        <article class="result-card" data-find-result>
-          <div class="result-card__tags">
-            <span class="tag-mini tag-mini--blue">MEETING</span>
-            <span class="tag-mini tag-mini--muted">2023.10.24</span>
-          </div>
-          <h4 class="result-card__title">신규 프로젝트 킥오프 회의</h4>
-          <p class="result-card__text">디자인 시스템 개편 일정 및 API 명세서 리뷰...</p>
-          <span class="result-card__arrow">›</span>
-        </article>
-        
-        <article class="result-card result-card--dim" data-find-result>
-          <div class="result-card__tags">
-            <span class="tag-mini tag-mini--grey">ARCHIVED</span>
-            <span class="tag-mini tag-mini--muted">2023.09.12</span>
-          </div>
-          <div class="result-card__body">
-            <div class="result-card__content">
-              <p class="result-card__title result-card__title--sm">과거 브랜드 가이드라인 초안</p>
-              <p class="result-card__text">현재는 사용되지 않는 구버전 디자인 시스템...</p>
-            </div>
-            <div class="result-card__action">
-              <span class="archive-icon">🗃</span> 보관됨
+          <div class="output-block" id="outTags">
+            <span class="output-label">AUTO TAGS</span>
+            <div class="output-tags">
+              <span class="chip chip--org-blue">비즈니스 성장</span>
+              <span class="chip chip--org-pink">핵심 성과</span>
+              <span class="chip chip--org-green">아이디어</span>
             </div>
           </div>
-        </article>
+          <div class="output-block output-block--score" id="outScore">
+            <span class="output-label">CONFIDENCE SCORE</span>
+            <span class="output-value output-value--score"><span id="scoreVal">0</span>%</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--insight" id="insight">
+      <div class="section-head section-head--insight">
+        <span class="section-eyebrow">03 AI INSIGHT</span>
+        <h2 class="section-title">당신의 메모, 이야기가 되다.</h2>
+        <p class="section-desc">흩어진 메모들 속에서 의미를 찾습니다.<br>주간 인사이트와 다음 할 일을 AI가 제안합니다.</p>
       </div>
 
-      <div class="find__img-wrap">
-        <img src="img/search.jpg" alt="Search App" class="find-phone-img">
+      <div class="insight__stage">
+        <div class="insight__col insight__col--left" data-stagger="left">
+          <span class="pill-label pill-label--insight"><span class="pill-line"></span>WEEKLY INSIGHT</span>
+          <h3 class="insight__heading">이번 주의 핵심 통찰</h3>
+          <p class="insight__text">프로젝트 관리와 효율적 소통이 업무 생산성을<br><span class="text-accent">15% 향상</span> 시켰습니다.</p>
+          <div class="insight__stats">
+            <div class="stat">
+              <span class="stat__label">작성된 메모</span>
+              <span class="stat__value"><span id="insightStatCount">0</span>개</span>
+            </div>
+            <div class="stat">
+              <span class="stat__label">분석 효율</span>
+              <span class="stat__value stat__value--pos">+<span id="insightStatEff">0</span>%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="insight__col insight__col--center" data-stagger="center">
+          <img src="img/ai.jpg" alt="AI Insight" class="insight-center-img">
+        </div>
+
+        <div class="insight__col insight__col--right" data-stagger="right">
+          <div class="side-card">
+            <p class="side-card__label">ANALYSIS STATUS</p>
+            <div class="side-card__row"><span>시장 분석 보고서 요약</span><b class="text-accent">85%</b></div>
+          </div>
+          <div class="side-card">
+            <p class="side-card__label">ACTION ITEMS</p>
+            <ul class="side-card__list">
+              <li><span class="dot dot--red"></span>디자인 팀 검토 미팅 예약</li>
+              <li><span class="dot dot--green"></span>사용자 인터뷰 질문지 리스트업</li>
+            </ul>
+          </div>
+          <p class="side-quote">"AI가 당신의 기록 습관을 분석하여 최적의<br> 생산성 루틴을 제안합니다."</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 04 FIND ================= -->
+    <section class="section section--find" id="find">
+      <div class="section-header section-header--find">
+        <span class="section-eyebrow">04 FIND</span>
+        <h2 class="section-title">기억하지 마세요<br>AI가 찾아낼게요</h2>
+        <p class="section-desc">키워드를 정확히 기억하지 못해도 괜찮습니다. 문맥과 의도를 이해하는 스마트<br>검색으로 당신의 파편화된 기록들을 하나의 맥락으로 연결합니다.</p>
+      </div>
+
+      <div class="find__stage">
+        <div class="find__panel" id="findPanel">
+          <div class="search-bar">
+            <span class="search-icon">⌕</span>
+            <span class="search-text">신규 프로</span>
+            <span class="search-check">✓</span>
+          </div>
+
+          <div class="search-tags-row">
+            <p class="search-section-label">SEARCH RESULTS</p>
+            <div class="search-tags">
+              <span class="chip chip--find-blue" data-find-tag>#WORK</span>
+              <span class="chip chip--find-pink" data-find-tag>#PROJECT</span>
+            </div>
+          </div>
+
+          <article class="result-card" data-find-result>
+            <div class="result-card__tags">
+              <span class="tag-mini tag-mini--blue">MEETING</span>
+              <span class="tag-mini tag-mini--muted">2023.10.24</span>
+            </div>
+            <h4 class="result-card__title">신규 프로젝트 킥오프 회의</h4>
+            <p class="result-card__text">디자인 시스템 개편 일정 및 API 명세서 리뷰...</p>
+            <span class="result-card__arrow">›</span>
+          </article>
+
+          <article class="result-card result-card--dim" data-find-result>
+            <div class="result-card__tags">
+              <span class="tag-mini tag-mini--grey">ARCHIVED</span>
+              <span class="tag-mini tag-mini--muted">2023.09.12</span>
+            </div>
+            <div class="result-card__body">
+              <div class="result-card__content">
+                <p class="result-card__title result-card__title--sm">과거 브랜드 가이드라인 초안</p>
+                <p class="result-card__text">현재는 사용되지 않는 구버전 디자인 시스템...</p>
+              </div>
+              <div class="result-card__action">
+                <span class="archive-icon">🗃</span> 보관됨
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="find__img-wrap">
+          <img src="img/search.jpg" alt="Search App" class="find-phone-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FINAL CTA ================= -->
+    <section class="section section--cta" id="cta">
+      <h2 class="cta__title" data-reveal><span class="highlight-text highlight-text--blue">당신의 메모,</span><br><span
+          class="highlight-text highlight-text--blue">당신의 AI 오거나이저.</span></h2>
+      <p class="cta__desc" data-reveal>솔트원과 함께 기록의 가치를 재발견하고 더 본질적인 것에 집중하세요.</p>
+      <button class="cta__button" id="ctaButton" data-reveal>
+        <div class="qr-box qr-box--cta">
+          <img src="img/qr.png" alt="QR Code" width="56" height="56" style="border-radius: 8px;">
+        </div>
+      </button>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <p class="footer__logo"><img src="img/logo.png" alt="SortOne" style="height: 24px; vertical-align: middle; filter: grayscale(100%); opacity: 0.6;"></p>
+        <p class="footer__tag">AI가 당신의 기록을 이해하고 정리하는 가장 스마트한 방법, 솔트원과 함께 본질에 집중하세요.</p>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">PRODUCT</p>
+        <a href="#">Features</a>
+        <a href="#">AI Organize</a>
+        <a href="#">Pricing</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">COMPANY</p>
+        <a href="#">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">RESOURCES</p>
+        <a href="#">Help Center</a>
+        <a href="#">Community</a>
+        <a href="#">API</a>
+      </div>
+      <div class="footer__col">
+        <p class="footer__col-title">LEGAL</p>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Security</a>
       </div>
     </div>
-  </section>
+    <div class="footer__bottom">
+      <span>COPYRIGHT©2024 SORTONE. ALL RIGHT RESERVED.</span>
+      <span class="footer__bottom-links"><a href="#">PRIVACY POLICY</a><a href="#">TERMS OF SERVICE</a><a
+          href="#">COOKIE SETTING</a></span>
+    </div>
+  </footer>
 
-  <!-- ================= FINAL CTA ================= -->
-  <section class="section section--cta" id="cta">
-    <h2 class="cta__title" data-reveal><span class="highlight-text highlight-text--blue">당신의 메모,</span><br><span class="highlight-text highlight-text--blue">당신의 AI 오거나이저.</span></h2>
-    <p class="cta__desc" data-reveal>솔트원과 함께 기록의 가치를 재발견하고 더 본질적인 것에 집중하세요.</p>
-    <button class="cta__button" id="ctaButton" data-reveal>
-      <div class="qr-box qr-box--cta">
-        <img src="img/qr.png" alt="QR Code" width="56" height="56" style="border-radius: 8px;">
-      </div>
-    </button>
-  </section>
-
-</main>
-
-<!-- ================= FOOTER ================= -->
-<footer class="footer">
-  <div class="footer__top">
-    <div class="footer__brand">
-      <p class="footer__logo">SortOne</p>
-      <p class="footer__tag">AI가 당신의 기록을 이해하고 정리하는 가장 스마트한 방법, 솔트원과 함께 본질에 집중하세요.</p>
-      <div class="footer__social">
-        <span>◐</span><span>✳</span><span>◇</span>
-      </div>
-    </div>
-    <div class="footer__col">
-      <p class="footer__col-title">PRODUCT</p>
-      <a href="#">Features</a>
-      <a href="#">AI Organize</a>
-      <a href="#">Pricing</a>
-    </div>
-    <div class="footer__col">
-      <p class="footer__col-title">COMPANY</p>
-      <a href="#">About Us</a>
-      <a href="#">Careers</a>
-      <a href="#">Blog</a>
-    </div>
-    <div class="footer__col">
-      <p class="footer__col-title">RESOURCES</p>
-      <a href="#">Help Center</a>
-      <a href="#">Community</a>
-      <a href="#">API</a>
-    </div>
-    <div class="footer__col">
-      <p class="footer__col-title">LEGAL</p>
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="#">Security</a>
-    </div>
-  </div>
-  <div class="footer__bottom">
-    <span>COPYRIGHT©2024 SORTONE. ALL RIGHT RESERVED.</span>
-    <span class="footer__bottom-links"><a href="#">PRIVACY POLICY</a><a href="#">TERMS OF SERVICE</a><a href="#">COOKIE SETTING</a></span>
-  </div>
-</footer>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="script.js"></script>
 </body>
+
 </html>
