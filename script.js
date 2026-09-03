@@ -203,17 +203,37 @@ const scoreObj = { val: 0 };
 const scoreEl = document.getElementById("scoreVal");
 
 organizeTl
+  // 1. 좌측 스마트폰 목업 3D 틸트 슬라이드 & 페이드인 (스크러빙 연동)
+  .from(".organize__phone-wrap", {
+    x: -40,
+    y: 20,
+    opacity: 0,
+    scale: 0.95,
+    rotationY: -15, // 3D tilt
+    rotationZ: -2,
+    duration: 2.5, // 타이핑과 동시에 이루어지게 하거나 조금 짧게
+    ease: "power2.out"
+  }, 0)
+  // 2. 안착 후 하단 그림자가 짙어지며 가볍게 떠오르는 호흡 모션
+  // (스크러빙에 연동되므로 스크롤을 내릴수록 그림자가 짙어지고 살짝 뜹니다)
+  .to(".organize__phone-wrap", {
+    y: -8,
+    filter: "drop-shadow(0 25px 25px rgba(67, 150, 255, 0.4))",
+    duration: 2,
+    ease: "sine.inOut"
+  }, 1) // 약간 늦게 시작
+
   // Step 1 (입력): 기존 텍스트 지우고 타이핑 효과 시작
-  .call(() => { if(typeTarget) typeTarget.innerText = ""; }) // 기존 텍스트 초기화
+  .call(() => { if(typeTarget) typeTarget.innerText = ""; }, null, 0.5) // 기존 텍스트 초기화
   .to(typeObj, {
     progress: 100,
-    duration: 2.5,
+    duration: 3.5, // 텍스트 타이핑 속도를 늦춤 (스크롤 대비 더 길게)
     ease: "none",
     onUpdate: function() {
       const length = Math.floor((typeObj.progress / 100) * textToType.length);
       if(typeTarget) typeTarget.innerHTML = textToType.substring(0, length) + "<span class='blink'>|</span>";
     }
-  }, 0)
+  }, 0.5)
 
   // 제자리 호흡 모션 (Scale): 빨간 배지가 제자리에서 살짝 커지며 강조됨
   .to("#analyzingPill", {

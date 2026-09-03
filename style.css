@@ -1447,7 +1447,6 @@ ul {
   max-width: var(--container);
   margin: 0 auto;
   padding-top: 28px;
-  border-top: 1px solid var(--line);
   display: flex;
   justify-content: space-between;
   font-size: 11px;
@@ -1455,9 +1454,26 @@ ul {
   letter-spacing: .02em;
 }
 
+.footer__divider {
+  border-top: 1px solid var(--line);
+  margin-top: 28px;
+  margin-left: -48px;
+  margin-right: -48px;
+}
+
+.copyright-text {
+  color: var(--ink); /* 진한 색상 */
+  font-weight: 600; /* 조금 더 굵게 */
+}
+
 .footer__bottom-links {
   display: flex;
   gap: 20px;
+}
+
+.footer__bottom-links a {
+  color: var(--ink);
+  font-weight: 600;
 }
 
 .footer__bottom-links a:hover {
@@ -1656,3 +1672,21 @@ ul {
   background: #f0fff4;
   color: #3dbd7d;
 }
+ # o r g a n i z e S t a g e   { 
+     p e r s p e c t i v e :   1 2 0 0 p x ; 
+ } 
+ 
+ . o r g a n i z e _ _ p h o n e - w r a p   { 
+     f i l t e r :   d r o p - s h a d o w ( 0   0 p x   0 p x   r g b a ( 6 7 ,   1 5 0 ,   2 5 5 ,   0 ) ) ; 
+ }  
+ 
+ @ m e d i a   ( m a x - w i d t h :   8 6 0 p x )   { 
+     . f o o t e r   { 
+         p a d d i n g :   6 0 p x   2 4 p x   3 2 p x ; 
+     } 
+     . f o o t e r _ _ d i v i d e r   { 
+         m a r g i n - l e f t :   - 2 4 p x ; 
+         m a r g i n - r i g h t :   - 2 4 p x ; 
+     } 
+ }  
+ 
