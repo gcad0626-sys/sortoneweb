@@ -47,7 +47,7 @@ introTl
     ease: "power3.out"
   }, "-=1.0")
   .from(".intro__qr", { y: 20, opacity: 0, duration: 1.0 }, "-=0.6")
-  .to(".qr-label .highlight-text", { backgroundSize: "100% 100%", duration: 0.8, ease: "power2.out" }, "-=0.3");
+  .to(".qr-label .highlight-text", { backgroundSize: "100% 100%", duration: 0.6, stagger: 0.2, ease: "power2.out" }, "-=0.3");
 
 // Phone mockup: 별도 애니메이션 (페이지 최상단에서도 안정적으로 동작)
 gsap.from(".phone-mockup", {
@@ -134,7 +134,7 @@ gsap.timeline({
     toggleActions: "play reverse play reverse"
   }
 })
-.to(".intro__copy", { y: -40, opacity: 0.5, duration: 0.8, ease: "power2.inOut" }, 0)
+.to(".intro__copy", { y: -40, duration: 0.8, ease: "power2.inOut" }, 0)
 .to(".intro__visual", { scale: 0.98, duration: 0.8, ease: "power2.inOut" }, 0);
 
 /* =========================================================
@@ -381,7 +381,7 @@ const ctaTl = gsap.timeline({
   }
 });
 
-ctaTl.to(".highlight-text", {
+ctaTl.to(".highlight-text--cta", {
   "--hl-scale": 1,
   duration: 1,
   stagger: 0.3,
@@ -402,19 +402,21 @@ gsap.from("#cta [data-reveal]", {
 });
 
 // QR Code Click Transition
-const ctaButton = document.getElementById("ctaButton");
-if(ctaButton) {
-  ctaButton.addEventListener("click", () => {
-    document.body.style.transition = "opacity 0.6s ease";
-    document.body.style.opacity = 0;
-    setTimeout(() => {
-      // 지정된 링크나 앱스토어로 이동 (현재는 임시로 상단 이동 처리)
-      window.scrollTo(0, 0);
-      document.body.style.opacity = 1;
-      alert("솔트원 앱 다운로드 페이지로 이동합니다.");
-    }, 600);
-  });
-}
+const qrButtons = [document.getElementById("ctaButton"), document.getElementById("introQrBtn")];
+qrButtons.forEach(btn => {
+  if(btn) {
+    btn.addEventListener("click", () => {
+      document.body.style.transition = "opacity 0.6s ease";
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        // 지정된 링크나 앱스토어로 이동 (현재는 임시로 상단 이동 처리)
+        window.scrollTo(0, 0);
+        document.body.style.opacity = 1;
+        alert("솔트원 앱 다운로드 페이지로 이동합니다.");
+      }, 600);
+    });
+  }
+});
 
 
 /* refresh on load once fonts/images settle */

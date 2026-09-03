@@ -249,6 +249,7 @@ ul {
   align-items: center;
   justify-content: center;
   background: #fff;
+  transition: box-shadow 0.5s ease;
 }
 
 .qr-label {
@@ -1340,18 +1341,19 @@ ul {
   transition: box-shadow 0.5s ease;
 }
 
-.cta__button:hover .qr-box--cta {
+.cta__button:hover .qr-box--cta,
+.cta__button:hover .qr-box {
   box-shadow: 0 30px 50px -10px rgba(147, 201, 255, 0.4);
 }
 
-.highlight-text {
+.highlight-text--cta {
   position: relative;
   display: inline-block;
   z-index: 1;
   --hl-scale: 0;
 }
 
-.highlight-text::after {
+.highlight-text--cta::after {
   content: "";
   position: absolute;
   left: 0;
