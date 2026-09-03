@@ -203,7 +203,7 @@ const scoreObj = { val: 0 };
 const scoreEl = document.getElementById("scoreVal");
 
 organizeTl
-  // 1. 좌측 스마트폰 목업 3D 틸트 슬라이드 & 페이드인 (스크러빙 연동)
+  // 1. 좌측 스마트폰 목업 3D 틸트 슬라이드 & 페이드인
   .from(".organize__phone-wrap", {
     x: -40,
     y: 20,
@@ -211,9 +211,23 @@ organizeTl
     scale: 0.95,
     rotationY: -15, // 3D tilt
     rotationZ: -2,
-    duration: 2.5, // 타이핑과 동시에 이루어지게 하거나 조금 짧게
+    duration: 2.5,
     ease: "power2.out"
   }, 0)
+  // 0a. 가운데 Analyzing Pill 등장
+  .to(".organize__middle", {
+    opacity: 1,
+    scale: 1,
+    duration: 1.5,
+    ease: "back.out(1.4)"
+  }, 1.0)
+  // 0b. 오른쪽 결과 패널 등장
+  .to(".organize__output", {
+    opacity: 1,
+    x: 0,
+    duration: 2,
+    ease: "power2.out"
+  }, 1.5)
   // 2. 안착 후 하단 그림자가 짙어지며 가볍게 떠오르는 호흡 모션
   // (스크러빙에 연동되므로 스크롤을 내릴수록 그림자가 짙어지고 살짝 뜹니다)
   .to(".organize__phone-wrap", {
@@ -381,8 +395,16 @@ gsap.set(".search-tags-row, [data-find-result]", { y: -15, opacity: 0 });
 gsap.set(".find-phone-img", { y: 20, opacity: 0 });
 
 findTl
-  // Step 1: Left search bar border highlights (입력 완료 시점)
-  .to(".find__panel .search-bar", { borderColor: "#4396FF", boxShadow: "0 0 0 2px rgba(67, 150, 255, 0.15)", duration: 1 })
+  // Step 0: 검색창 위에서 내려오며 페이드인 (CSS 초기: opacity:0, y:-16px)
+  .to(".find__panel .search-bar", {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    ease: "power2.out"
+  })
+
+  // Step 1: 검색창 테두리 하이라이트 (입력 완료 시점)
+  .to(".find__panel .search-bar", { borderColor: "#4396FF", boxShadow: "0 0 0 2px rgba(67, 150, 255, 0.15)", duration: 1 }, "+=0.2")
   
   // Step 2: Tags appear and pop
   .to(".search-tags-row", { y: 0, opacity: 1, duration: 0.5 }, "+=0.2")
@@ -496,6 +518,44 @@ sections.forEach((section, index) => {
     onEnter: () => setActive(section.id),
     onLeaveBack: () => {
       if (index > 0) setActive(sections[index - 1].id);
+    }
+  });
+});
+
+// --- 상단 네비 클릭 시 완성된 화면 상태로 이동 ---
+// 각 핀 섹션의 타임라인 .scrollTrigger를 직접 참조해 end 위치로 이동
+const sectionTimelines = {
+  organize: organizeTl,
+  insight: insightTl,
+  find: findTl
+};
+
+document.querySelectorAll('.nav-link, .dot').forEach(el => {
+  el.addEventListener('click', function(e) {
+    e.preventDefault();
+    const sectionId = this.getAttribute('href')?.replace('#', '') || this.getAttribute('data-dot');
+    if (!sectionId) return;
+
+    if (sectionId === 'intro') {
+      gsap.to(window, { scrollTo: { y: 0, autoKill: false }, duration: 1.2, ease: 'power2.inOut' });
+      return;
+    }
+
+    const tl = sectionTimelines[sectionId];
+    if (tl && tl.scrollTrigger) {
+      const st = tl.scrollTrigger;
+      // st.end = 모든 scrub 애니메이션이 완료된 스크롤 위치
+      // 50px 전으로 이동 → 완성된 화면을 안정적으로 유지
+      gsap.to(window, {
+        scrollTo: { y: st.end - 50, autoKill: false },
+        duration: 1.5,
+        ease: 'power2.inOut'
+      });
+    } else {
+      const target = document.getElementById(sectionId);
+      if (target) {
+        gsap.to(window, { scrollTo: { y: target, autoKill: false }, duration: 1.5, ease: 'power2.inOut' });
+      }
     }
   });
 });
