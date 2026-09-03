@@ -181,7 +181,15 @@ organizeTl
     ease: "power2.inOut"
   }, "-=0.5")
 
-  // Step 3 (분류/이동): 우측 패널의 카테고리 및 태그들이 왼쪽에서부터 날아오기
+  // 우측 패널 스캔라인 효과 (위에서 아래로 쓸고 지나감)
+  .to("#orgScanline", {
+    opacity: 1,
+    top: "120%",
+    duration: 2.5,
+    ease: "power1.inOut"
+  }, "-=0.8")
+
+  // Step 3 (분류/이동): 우측 패널의 카테고리 및 태그들이 스캔과 함께 나타남
   .from("#outCategory .output-value, #outTags .chip", {
     x: -550, // 좌측 스마트폰 부근에서 출발
     y: 120,
@@ -190,14 +198,14 @@ organizeTl
     stagger: 0.3,
     duration: 2,
     ease: "power3.out"
-  }, "-=0.8")
+  }, "-=2.2") // 스캔라인 하강과 동기화
 
   // 배지 원상태 복귀
   .to("#analyzingPill", {
     scale: 1,
     duration: 1,
     ease: "power2.out"
-  }, "-=1.2")
+  }, "-=1.5")
 
   // Step 4 (스코어): CONFIDENCE SCORE 카운트업
   .to(scoreObj, {

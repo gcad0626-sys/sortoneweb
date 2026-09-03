@@ -681,6 +681,8 @@ ul {
   display: flex;
   flex-direction: column;
   gap: 36px;
+  position: relative;
+  overflow: hidden;
 }
 
 .output-kicker {
