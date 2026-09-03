@@ -20,8 +20,55 @@ ScrollTrigger.create({
 
 
 /* =========================================================
-   01 INTRO — reveal + mouse micro-move
+   01 INTRO — reveal + typing
 ========================================================= */
+const introCursor = document.createElement("span");
+introCursor.className = "intro-cursor blink";
+introCursor.textContent = "|";
+
+function wrapChars(node) {
+  if (node.nodeType === Node.TEXT_NODE) {
+    const text = node.textContent;
+    const fragment = document.createDocumentFragment();
+    for (let char of text) {
+      if (char.trim() === '') {
+        fragment.appendChild(document.createTextNode(char));
+      } else {
+        const span = document.createElement('span');
+        span.className = 'typer-char';
+        span.textContent = char;
+        fragment.appendChild(span);
+      }
+    }
+    node.parentNode.replaceChild(fragment, node);
+  } else if (node.nodeType === Node.ELEMENT_NODE) {
+    Array.from(node.childNodes).forEach(wrapChars);
+  }
+}
+
+document.querySelectorAll(".intro__title .line").forEach(line => {
+  Array.from(line.childNodes).forEach(wrapChars);
+});
+
+const allTyperChars = document.querySelectorAll(".intro__title .typer-char");
+if (allTyperChars.length > 0) {
+  allTyperChars[0].parentNode.insertBefore(introCursor, allTyperChars[0]);
+}
+
+let typerIndex = 0;
+function startIntroTyping() {
+  if (typerIndex < allTyperChars.length) {
+    const charEl = allTyperChars[typerIndex];
+    charEl.classList.add("is-visible");
+    charEl.parentNode.insertBefore(introCursor, charEl.nextSibling);
+    typerIndex++;
+    // 조금 더 느긋하게 (110ms 기본 + 40ms 변주)
+    setTimeout(startIntroTyping, 110 + Math.random() * 40);
+  } else {
+    gsap.to(introCursor, { opacity: 0, duration: 0.5, delay: 1 });
+  }
+}
+
 const introTl = gsap.timeline({ 
   defaults: { ease: EASE_GSAP },
   scrollTrigger: {
@@ -32,20 +79,14 @@ const introTl = gsap.timeline({
 });
 
 introTl
-  .from(".intro__title .line", {
-    yPercent: 130,
-    opacity: 0,
-    duration: 2.4,
-    stagger: 0.22,
-    ease: "power3.out"
-  })
+  .add(() => startIntroTyping(), 0)
   .from(".intro__desc .line", {
     yPercent: 100,
     opacity: 0,
     duration: 1.4,
     stagger: 0.15,
     ease: "power3.out"
-  }, "-=1.0")
+  }, "+=0.5")
   .from(".intro__qr", { y: 20, opacity: 0, duration: 1.0 }, "-=0.6")
   .to(".qr-label .highlight-text", { backgroundSize: "100% 100%", duration: 0.6, stagger: 0.2, ease: "power2.out" }, "-=0.3");
 

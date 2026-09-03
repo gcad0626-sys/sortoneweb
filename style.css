@@ -234,6 +234,28 @@ ul {
   max-width: 380px;
 }
 
+.intro-cursor {
+  display: inline-block;
+  color: #63A8ED;
+  font-weight: 300;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+}
+
+.typer-char {
+  display: none;
+}
+
+.typer-char.is-visible {
+  display: inline;
+  animation: char-fade 0.15s ease-out forwards;
+}
+
+@keyframes char-fade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
 .intro__qr {
   display: flex;
   align-items: center;
