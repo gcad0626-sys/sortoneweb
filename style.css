@@ -1311,7 +1311,7 @@ ul {
   width: 140%;
   height: 140%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(160, 160, 160, 0.35) 0%, transparent 60%);
+  background: radial-gradient(circle, rgba(147, 201, 255, 0.45) 0%, transparent 60%);
   opacity: 0;
   z-index: -1;
   pointer-events: none;
@@ -1341,7 +1341,7 @@ ul {
 }
 
 .cta__button:hover .qr-box--cta {
-  box-shadow: 0 30px 50px -10px rgba(0, 0, 0, .3);
+  box-shadow: 0 30px 50px -10px rgba(147, 201, 255, 0.4);
 }
 
 .highlight-text {
@@ -1359,7 +1359,7 @@ ul {
   width: 100%;
   height: 35%;
   z-index: -1;
-  background-color: rgba(160, 160, 160, 0.35); /* 회색빛 하이라이트 */
+  background-color: #93C9FF; /* 요청하신 파란색 하이라이트 */
   transform-origin: left center;
   transform: scaleX(var(--hl-scale));
 }
