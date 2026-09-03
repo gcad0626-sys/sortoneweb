@@ -369,8 +369,25 @@ gsap.utils.toArray(".section-header, .section-head").forEach(head => {
 });
 
 /* =========================================================
-   FINAL CTA — reveal + floating hover already handled in CSS
+   FINAL CTA — Scrubbing Interactions & Click
 ========================================================= */
+const ctaTl = gsap.timeline({
+  scrollTrigger: {
+    trigger: "#cta",
+    start: "top 70%",
+    end: "bottom 70%",
+    scrub: 1,
+    onEnter: () => document.getElementById("ctaButton").classList.add("pulse-glow")
+  }
+});
+
+ctaTl.to(".highlight-text", {
+  "--hl-scale": 1,
+  duration: 1,
+  stagger: 0.3,
+  ease: "power2.out"
+});
+
 gsap.from("#cta [data-reveal]", {
   scrollTrigger: {
     trigger: "#cta",
@@ -384,18 +401,21 @@ gsap.from("#cta [data-reveal]", {
   ease: EASE_GSAP
 });
 
-gsap.to("#cta .highlight-text--blue", {
-  scrollTrigger: {
-    trigger: "#cta",
-    start: "top 70%",
-    toggleActions: "play none none reverse"
-  },
-  backgroundSize: "100% 100%",
-  duration: 0.8,
-  delay: 0.5,
-  stagger: 0.3,
-  ease: "power2.out"
-});
+// QR Code Click Transition
+const ctaButton = document.getElementById("ctaButton");
+if(ctaButton) {
+  ctaButton.addEventListener("click", () => {
+    document.body.style.transition = "opacity 0.6s ease";
+    document.body.style.opacity = 0;
+    setTimeout(() => {
+      // 지정된 링크나 앱스토어로 이동 (현재는 임시로 상단 이동 처리)
+      window.scrollTo(0, 0);
+      document.body.style.opacity = 1;
+      alert("솔트원 앱 다운로드 페이지로 이동합니다.");
+    }, 600);
+  });
+}
+
 
 /* refresh on load once fonts/images settle */
 window.addEventListener("load", () => ScrollTrigger.refresh());
