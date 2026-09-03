@@ -152,7 +152,7 @@ const organizeTl = gsap.timeline({
 });
 
 const typeTarget = document.querySelector(".editor-box");
-const textToType = "신규 프로젝트 킥오프 미팅 요약: 비즈니스 성장 전략 및 핵심 성과 도출을 위한 새로운 아이디어 논의.";
+const textToType = "신규 프로젝트 킥오프 미팅 요약 비즈니스 성장 전략 및 핵심 성과 도출을 위한 새로운 아이디어 논의";
 const typeObj = { progress: 0 };
 const scoreObj = { val: 0 };
 const scoreEl = document.getElementById("scoreVal");
@@ -166,7 +166,7 @@ organizeTl
     ease: "none",
     onUpdate: function() {
       const length = Math.floor((typeObj.progress / 100) * textToType.length);
-      if(typeTarget) typeTarget.innerText = textToType.substring(0, length) + "|";
+      if(typeTarget) typeTarget.innerHTML = textToType.substring(0, length) + "<span class='blink'>|</span>";
     }
   }, 0)
   
