@@ -147,7 +147,11 @@ const organizeTl = gsap.timeline({
     end: "+=250%",
     scrub: 1,
     pin: true,
-    anticipatePin: 1
+    anticipatePin: 1,
+    onEnter: () => document.getElementById("analyzingPill")?.classList.add("is-pulsing"),
+    onLeave: () => document.getElementById("analyzingPill")?.classList.remove("is-pulsing"),
+    onEnterBack: () => document.getElementById("analyzingPill")?.classList.add("is-pulsing"),
+    onLeaveBack: () => document.getElementById("analyzingPill")?.classList.remove("is-pulsing")
   }
 });
 
@@ -169,15 +173,13 @@ organizeTl
       if(typeTarget) typeTarget.innerHTML = textToType.substring(0, length) + "<span class='blink'>|</span>";
     }
   }, 0)
-  
-  // Step 2 (분석): AI ANALYZING 배지 펄스 활성화
+
+  // 제자리 호흡 모션 (Scale): 빨간 배지가 제자리에서 살짝 커지며 강조됨
   .to("#analyzingPill", {
-    scale: 1.15,
-    boxShadow: "0 0 0 20px rgba(255,59,48, 0)",
-    duration: 1.2,
-    ease: "power2.out"
-  }, "+=0.2")
-  .to("#analyzingPill", { scale: 1, duration: 0.5 }, "-=0.5") // 펄스 후 원래 크기로 복귀
+    scale: 1.08,
+    duration: 1,
+    ease: "power2.inOut"
+  }, "-=0.5")
 
   // Step 3 (분류/이동): 우측 패널의 카테고리 및 태그들이 왼쪽에서부터 날아오기
   .from("#outCategory .output-value, #outTags .chip", {
@@ -188,7 +190,14 @@ organizeTl
     stagger: 0.3,
     duration: 2,
     ease: "power3.out"
-  }, "-=0.5")
+  }, "-=0.8")
+
+  // 배지 원상태 복귀
+  .to("#analyzingPill", {
+    scale: 1,
+    duration: 1,
+    ease: "power2.out"
+  }, "-=1.2")
 
   // Step 4 (스코어): CONFIDENCE SCORE 카운트업
   .to(scoreObj, {
