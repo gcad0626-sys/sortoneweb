@@ -160,7 +160,11 @@
         <p class="section-desc">흩어진 메모들 속에서 의미를 찾습니다.<br>주간 인사이트와 다음 할 일을 AI가 제안합니다.</p>
       </div>
 
-      <div class="insight__stage">
+      <div class="insight__stage" style="position: relative;">
+        <!-- 데이터 연결선 드로잉 효과를 위한 요소 -->
+        <div class="insight-connect-line insight-connect-line--left"></div>
+        <div class="insight-connect-line insight-connect-line--right"></div>
+        
         <div class="insight__col insight__col--left" data-stagger="left">
           <span class="pill-label pill-label--insight"><span class="pill-line"></span>WEEKLY INSIGHT</span>
           <h3 class="insight__heading">이번 주의 핵심 통찰</h3>
@@ -185,6 +189,8 @@
           <div class="side-card">
             <p class="side-card__label">ANALYSIS STATUS</p>
             <div class="side-card__row"><span>시장 분석 보고서 요약</span><b class="text-accent">85%</b></div>
+            <!-- 분석 프로그레스 바 -->
+            <div class="insight-progress"><div class="insight-progress-bar" id="insightProgressBar"></div></div>
           </div>
           <div class="side-card">
             <p class="side-card__label">ACTION ITEMS</p>

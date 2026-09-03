@@ -253,14 +253,45 @@ insightTl
     onUpdate: () => { if(insightStatEff) insightStatEff.innerText = Math.round(insightStatObj2.val); }
   }, "-=1.5")
   
-  // Step 2: 중앙 이미지 슬라이드 업
+  // Step 2: 중앙 이미지 슬라이드 업 및 좌측 데이터 연결선 드로잉
   .to(".insight-center-img", { opacity: 1, y: 0, duration: 2, ease: "power2.out" }, "-=0.5")
+  .to(".insight-connect-line--left", { width: "15%", opacity: 0.6, duration: 1.5, ease: "power2.inOut" }, "-=1.5")
   
-  // Step 3: 우측 패널 연동
-  .to(".insight-card, .side-card", { opacity: 1, y: 0, duration: 1.5, stagger: 0.5, ease: "power2.out" }, "-=1")
+  // Step 3: 우측 패널 연동 및 우측 데이터 연결선 드로잉
+  .to(".insight-connect-line--right", { width: "18%", opacity: 0.6, duration: 1.5, ease: "power2.inOut" }, "-=0.5")
+  .to(".side-card", { opacity: 1, y: 0, duration: 1.5, stagger: 0.5, ease: "power2.out" }, "-=1.0")
   
-  // Step 4: 하단 카피
-  .to(".side-quote", { opacity: 1, duration: 1.5, ease: "power2.out" }, "-=0.5");
+  // 첫 번째 카드(ANALYSIS STATUS) 순차적 포커스 스태거 (Glow & Float) 및 프로그레스 바 채워짐
+  .to(".side-card:nth-child(1)", { 
+    boxShadow: "0 10px 30px rgba(67,150,255,0.15)", 
+    borderColor: "rgba(67,150,255,0.3)", 
+    y: -5, 
+    duration: 1 
+  }, "-=0.5")
+  .to("#insightProgressBar", { width: "85%", duration: 1.5, ease: "power3.out" }, "-=1.0")
+  
+  // 두 번째 카드(ACTION ITEMS) 포커스 이동 (첫 번째는 원래대로)
+  .to(".side-card:nth-child(1)", { 
+    boxShadow: "0 2px 8px rgba(0,0,0,0.04)", // 원본 shadow로 복귀
+    borderColor: "var(--line)", 
+    y: 0, 
+    duration: 1 
+  }, "+=0.2")
+  .to(".side-card:nth-child(2)", { 
+    boxShadow: "0 10px 30px rgba(67,150,255,0.15)", 
+    borderColor: "rgba(67,150,255,0.3)", 
+    y: -5, 
+    duration: 1 
+  }, "-=1.0")
+
+  // Step 4: 하단 카피 및 두 번째 카드 포커스 해제
+  .to(".side-card:nth-child(2)", { 
+    boxShadow: "0 2px 8px rgba(0,0,0,0.04)", 
+    borderColor: "var(--line)", 
+    y: 0, 
+    duration: 1 
+  }, "+=0.2")
+  .to(".side-quote", { opacity: 1, duration: 1.5, ease: "power2.out" }, "-=1.0");
 
 /* =========================================================
    04 FIND — search results unfold + tag slide-in
