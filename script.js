@@ -320,13 +320,35 @@ gsap.set(".search-tags-row, [data-find-result]", { y: -15, opacity: 0 });
 gsap.set(".find-phone-img", { y: 20, opacity: 0 });
 
 findTl
-  // Step 1: Left search bar border highlights
+  // Step 1: Left search bar border highlights (입력 완료 시점)
   .to(".find__panel .search-bar", { borderColor: "#4396FF", boxShadow: "0 0 0 2px rgba(67, 150, 255, 0.15)", duration: 1 })
-  // Step 2: Tags and result cards slide down smoothly
-  .to(".search-tags-row", { y: 0, opacity: 1, duration: 1 }, "+=0.5")
-  .to("[data-find-result]", { y: 0, opacity: 1, duration: 1.5, stagger: 0.4 }, "-=0.5")
-  // Step 3: Right smartphone mockup screen naturally fades in
-  .to(".find-phone-img", { y: 0, opacity: 1, duration: 2 }, "-=1");
+  
+  // Step 2: Tags appear and pop
+  .to(".search-tags-row", { y: 0, opacity: 1, duration: 0.5 }, "+=0.2")
+  .fromTo(".search-tags .chip", { scale: 0.8 }, { scale: 1, duration: 0.5, ease: "back.out(1.7)", stagger: 0.1 }, "-=0.2")
+  
+  // Step 3: Cards slide down
+  .to("[data-find-result]", { y: 0, opacity: 1, duration: 1, stagger: 0.3 }, "-=0.5")
+  
+  // Step 4: First card glow and slight scale (Match highlight)
+  .to("[data-find-result]:nth-of-type(1)", {
+    scale: 1.02,
+    boxShadow: "0 8px 24px rgba(67, 150, 255, 0.15)",
+    borderColor: "rgba(67, 150, 255, 0.4)",
+    duration: 1,
+    ease: "power2.out"
+  }, "-=0.8")
+  
+  // Step 5: Second card dim (Contrast)
+  .to("[data-find-result]:nth-of-type(2)", {
+    opacity: 0.4,
+    scale: 0.98,
+    duration: 1,
+    ease: "power2.out"
+  }, "-=1.0")
+
+  // Step 6: Right smartphone mockup screen naturally fades in
+  .to(".find-phone-img", { y: 0, opacity: 1, duration: 2 }, "-=0.5");
 
 /* =========================================================
    SECTION HEADERS REVEAL

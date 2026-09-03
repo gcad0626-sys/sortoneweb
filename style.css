@@ -1048,6 +1048,18 @@ ul {
 .search-text {
   color: var(--ink);
   font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.search-text::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: #4396FF; /* 파란색 커서 */
+  margin-left: 4px;
+  animation: blink-anim 1s step-end infinite;
 }
 
 .search-check {
